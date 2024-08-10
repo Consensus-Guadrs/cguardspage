@@ -1,11 +1,10 @@
 <template>
   <nav class="navbar">
     <div class="logo">
-      <img src="/logo.png" alt="Logo">
-      <p>Better than just a validator</p>
+      <a href="/"><img src="/logo.png" alt="Logo"></a>
+      <p>Blockchain's power for big goals</p>
     </div>
     <ul :class="['nav-links', { 'nav-active': isNavActive }]">
-      <li><router-link to="/" @click="closeNav">Home</router-link></li>
       <li><router-link to="/validate" @click="closeNav">Validate</router-link></li>
       <li><router-link to="/mainnets" @click="closeNav">Mainnets</router-link></li>
       <li><router-link to="/testnets" @click="closeNav">Testnets</router-link></li>
@@ -53,7 +52,6 @@ export default {
 }
 
 .logo {
-  display: flex;
   flex-direction: column;
   align-items: center;
 }

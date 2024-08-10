@@ -52,6 +52,16 @@
   ],
   "communityContributions": [
     {
+      "logo": "logo4.png",
+      "description": "Helping delegators get rewards with minimal commissions.",
+      "link": "https://github.com/Consensus-Guadrs"
+    },
+    {
+      "logo": "logo4.png",
+      "description": "Helping delegators get Airdrops.",
+      "link": "https://github.com/Consensus-Guadrs"
+    },
+    {
       "logo": "logo-dvs.png",
       "description": "Participation in DVS community.",
       "link": "https://cosmos.network/"

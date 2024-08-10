@@ -4,26 +4,61 @@
       <h2>{{ blockchain.name }}</h2>
     </div>
     <div class="details-section">
-      <h3>Cryptocurrency</h3>
+      <h3>Short description</h3>
+      <p>{{ blockchain.description }}</p>
+    </div>
+    <div class="details-section">
+      <h3>Token</h3>
       <p>{{ blockchain.cryptocurrency }}</p>
     </div>
     <div class="details-section">
       <h3>Website</h3>
-      <p><a :href="blockchain.address" target="_blank">{{ blockchain.address }}</a></p>
+      <p><a :href="blockchain.website" target="_blank">{{ blockchain.website }}</a></p>
     </div>
     <div class="details-section">
       <h3>Useful links</h3>
-      <p><strong>Github:</strong> <a :href="blockchain.github" target="_blank">{{ blockchain.github }}</a></p>
-      <p><strong>Mintscan:</strong> <a :href="blockchain.mintscan" target="_blank">{{ blockchain.mintscan }}</a></p>
-      <p><strong>Ping.pub:</strong> <a :href="blockchain.pingpub" target="_blank">{{ blockchain.pingpub }}</a></p>
-      <p><strong>Docs:</strong> <a :href="blockchain.documentation" target="_blank">{{ blockchain.documentation }}</a>
-      </p>
+      <p v-if="blockchain.github"><strong>Github:</strong> <a :href="blockchain.github" target="_blank">{{
+        blockchain.github }}</a></p>
+      <p v-if="blockchain.mintscan"><strong>Mintscan:</strong> <a :href="blockchain.mintscan" target="_blank">{{
+        blockchain.mintscan }}</a></p>
+      <p v-if="blockchain.pingpub"><strong>Ping.pub:</strong> <a :href="blockchain.pingpub" target="_blank">{{
+        blockchain.pingpub }}</a></p>
+      <p v-if="blockchain.documentation"><strong>Docs:</strong> <a :href="blockchain.documentation" target="_blank">{{
+        blockchain.documentation }}</a></p>
+      <p v-if="blockchain.twitter"><strong>Twitter (X):</strong> <a :href="blockchain.twitter" target="_blank">{{
+        blockchain.twitter }}</a></p>
+      <p v-if="blockchain.discord"><strong>Discord:</strong> <a :href="blockchain.discord" target="_blank">{{
+        blockchain.discord}}</a></p>
+      <p v-if="blockchain.telegram"><strong>Telegram:</strong> <a :href="blockchain.telegram" target="_blank">{{
+        blockchain.telegram }}</a></p>
     </div>
     <div class="details-section">
       <h3>Ecosystem</h3>
       <ul>
         <li v-for="eco in blockchain.ecosystem" :key="eco.name">
           <strong>{{ eco.name }} ({{ eco.type }}):</strong> <a :href="eco.link" target="_blank">{{ eco.link }}</a>
+        </li>
+      </ul>
+    </div>
+    <div v-if="quantityOfValidators && minimumTokensToBeActive" class="details-section">
+      <h3>Validators information</h3>
+      <p><strong>Quantity of validators:</strong> {{ quantityOfValidators }}</p>
+      <p><strong>Minimum tokens in active set:</strong> {{ minimumTokensToBeActive }}</p>
+    </div>
+    <div class="details-section">
+      <h3>System requirements for nodes</h3>
+      <ul>
+        <li><strong>CPU:</strong> {{ blockchain.requirements.cpu }}</li>
+        <li><strong>RAM:</strong> {{ blockchain.requirements.ram }}</li>
+        <li><strong>SSD:</strong> {{ blockchain.requirements.ssd }}</li>
+      </ul>
+    </div>
+    <div class="details-section">
+      <h3>Guides</h3>
+      <ul>
+        <li v-for="tutorial in blockchain.installation_tutorials" :key="tutorial.tutorial">
+          <p>{{ tutorial.tutorial }}</p>
+          <a :href="tutorial.link" target="_blank">{{ tutorial.link }}</a>
         </li>
       </ul>
     </div>
@@ -40,33 +75,6 @@
       <ul>
         <li v-for="contribution in blockchain.community_contributions" :key="contribution.contribution">
           <p>{{ contribution.contribution }}</p>
-        </li>
-      </ul>
-    </div>
-    <div v-if="quantityOfValidators && minimumTokensToBeActive" class="details-section">
-      <h3>Validators information</h3>
-      <p><strong>Quantity of validators:</strong> {{ quantityOfValidators }}</p>
-      <p><strong>Minimum tokens in active set:</strong> {{ minimumTokensToBeActive }}</p>
-    </div>
-    <div v-else-if="blockchain.current_amount_of_validators" class="details-section">
-      <h3>Validator Information</h3>
-      <p><strong>Quantity of validators:</strong> {{ blockchain.current_amount_of_validators }} / {{
-        blockchain.max_validators }}</p>
-    </div>
-    <div class="details-section">
-      <h3>System requirements for nodes</h3>
-      <ul>
-        <li><strong>CPU:</strong> {{ blockchain.requirements.cpu }}</li>
-        <li><strong>RAM:</strong> {{ blockchain.requirements.ram }}</li>
-        <li><strong>SSD:</strong> {{ blockchain.requirements.ssd }}</li>
-      </ul>
-    </div>
-    <div class="details-section">
-      <h3>Nodes install guides</h3>
-      <ul>
-        <li v-for="tutorial in blockchain.installation_tutorials" :key="tutorial.tutorial">
-          <p>{{ tutorial.tutorial }}</p>
-          <a :href="tutorial.link" target="_blank">{{ tutorial.link }}</a>
         </li>
       </ul>
     </div>
@@ -97,7 +105,7 @@ export default {
       .then(response => {
         if (response && response.data.validators) {
           const validators = response.data.validators;
-          const votingPower = Number(validators[validators.length - 1]?.voting_power) + 2;
+          const votingPower = validators[validators.length - 1]?.voting_power;
           let total = response.data.pagination.total;
 
           if (total === 0 || total === undefined) {
@@ -125,7 +133,7 @@ export default {
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.95);
   border-radius: 10px;
   color: white;
   max-height: 500px;
@@ -182,6 +190,10 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+p {
+  line-height: 28px;
 }
 
 /* Responsive styles */
@@ -244,7 +256,7 @@ a:hover {
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .blockchain-details {
     padding: 20px;
-    max-height: 500px;
+    max-height: 400px;
   }
 
   .details-section {
@@ -272,7 +284,8 @@ a:hover {
 @media (min-width: 1200px) {
   .blockchain-details {
     padding: 25px;
-    max-height: 600px;
+    max-height: 450px;
+    max-width: 70%;
   }
 
   .details-section {
@@ -280,11 +293,11 @@ a:hover {
   }
 
   h2 {
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
 
   h3 {
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
 
   p,

@@ -321,7 +321,7 @@ button.view-all-button:hover {
 
 @media (min-width: 1200px) {
   .validate {
-    padding: 40px;
+    padding: 20px;
   }
 
   .blockchain-link {
