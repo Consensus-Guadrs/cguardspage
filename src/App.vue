@@ -15,13 +15,11 @@
 
 <script>
 import NavBar from './components/NavBar.vue';
-import AppFooter from './components/AppFooter.vue';
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    AppFooter
   },
   mounted() {
     this.$refs.backgroundVideo.playbackRate = 0.5;

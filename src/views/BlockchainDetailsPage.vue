@@ -3,15 +3,15 @@
     <div class="details-section">
       <h2>{{ blockchain.name }}</h2>
     </div>
-    <div class="details-section">
+    <div v-if="blockchain.description" class="details-section">
       <h3>Short description</h3>
       <p>{{ blockchain.description }}</p>
     </div>
-    <div class="details-section">
+    <div v-if="blockchain.cryptocurrency" class="details-section">
       <h3>Token</h3>
       <p>{{ blockchain.cryptocurrency }}</p>
     </div>
-    <div class="details-section">
+    <div v-if="blockchain.website" class="details-section">
       <h3>Website</h3>
       <p><a :href="blockchain.website" target="_blank">{{ blockchain.website }}</a></p>
     </div>
@@ -32,7 +32,7 @@
       <p v-if="blockchain.telegram"><strong>Telegram:</strong> <a :href="blockchain.telegram" target="_blank">{{
         blockchain.telegram }}</a></p>
     </div>
-    <div class="details-section">
+    <div v-if="blockchain.ecosystem" class="details-section">
       <h3>Ecosystem</h3>
       <ul>
         <li v-for="eco in blockchain.ecosystem" :key="eco.name">
@@ -45,7 +45,7 @@
       <p><strong>Quantity of validators:</strong> {{ quantityOfValidators }}</p>
       <p><strong>Minimum tokens in active set:</strong> {{ minimumTokensToBeActive }}</p>
     </div>
-    <div class="details-section">
+    <div v-if="blockchain.requirements.cpu || blockchain.requirements.ram || blockchain.requirements.ssd" class="details-section">
       <h3>System requirements for nodes</h3>
       <ul>
         <li><strong>CPU:</strong> {{ blockchain.requirements.cpu }}</li>
@@ -53,7 +53,7 @@
         <li><strong>SSD:</strong> {{ blockchain.requirements.ssd }}</li>
       </ul>
     </div>
-    <div class="details-section">
+    <div v-if="blockchain.installation_tutorials" class="details-section">
       <h3>Guides</h3>
       <ul>
         <li v-for="tutorial in blockchain.installation_tutorials" :key="tutorial.tutorial">
@@ -62,7 +62,7 @@
         </li>
       </ul>
     </div>
-    <div class="details-section">
+    <div v-if="blockchain.technical_contributions" class="details-section">
       <h3>Technical contributions</h3>
       <ul>
         <li v-for="contribution in blockchain.technical_contributions" :key="contribution.contribution">
@@ -70,7 +70,7 @@
         </li>
       </ul>
     </div>
-    <div class="details-section">
+    <div v-if="blockchain.community_contributions" class="details-section">
       <h3>Community contributions</h3>
       <ul>
         <li v-for="contribution in blockchain.community_contributions" :key="contribution.contribution">
@@ -199,7 +199,7 @@ p {
 /* Responsive styles */
 @media (max-width: 767.98px) {
   .blockchain-details {
-    max-height: 500px;
+    max-height: 400px;
     max-width: 80%;
     padding: 10px;
   }
@@ -229,6 +229,7 @@ p {
 @media (min-width: 768px) and (max-width: 991.98px) {
   .blockchain-details {
     padding: 15px;
+    margin-top: 20px;
   }
 
   .details-section {
@@ -256,7 +257,8 @@ p {
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .blockchain-details {
     padding: 20px;
-    max-height: 400px;
+    max-height: 500px;
+    margin-top: 40px;
   }
 
   .details-section {
@@ -284,8 +286,8 @@ p {
 @media (min-width: 1200px) {
   .blockchain-details {
     padding: 25px;
-    max-height: 450px;
     max-width: 70%;
+    margin-top: 40px;
   }
 
   .details-section {

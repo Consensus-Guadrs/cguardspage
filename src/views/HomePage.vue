@@ -17,7 +17,7 @@
         </div>
         <div class="section" @click="navigateTo('/community-contributions')">
             <h2>Community</h2>
-            <p>Participate in the crypto community and bring mass adoption closer</p>
+            <p>Participating in the crypto community and bring mass adoption closer</p>
             <router-link to="/community-contributions" class="read-more">Explore</router-link>
         </div>
         <div class="section" @click="navigateTo('/technical-contributions')">

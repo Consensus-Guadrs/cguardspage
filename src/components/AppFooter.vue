@@ -1,12 +1,12 @@
 <template>
   <footer class="footer">
     <div class="social-icons">
-      <a :href="contactLinks.mintscan" target="_blank">
+      <!-- <a :href="contactLinks.mintscan" target="_blank">
         <img :src="mintscanIcon" alt="Mintscan">
       </a>
       <a :href="contactLinks.pingpub" target="_blank">
         <img :src="pingpubIcon" alt="Pingpub">
-      </a>
+      </a> -->
       <a :href="contactLinks.github" target="_blank">
         <img :src="githubIcon" alt="GitHub">
       </a>
@@ -28,12 +28,12 @@ export default {
     };
   },
   computed: {
-    mintscanIcon() {
-      return `${window.location.origin}/logo-mintscan.png`;
-    },
-    pingpubIcon() {
-      return `${window.location.origin}/pingpub.svg`;
-    },
+    // mintscanIcon() {
+    //   return `${window.location.origin}/logo-mintscan.png`;
+    // },
+    // pingpubIcon() {
+    //   return `${window.location.origin}/pingpub.svg`;
+    // },
     githubIcon() {
       return `${window.location.origin}/github-mark-white.svg`;
     },
@@ -54,7 +54,7 @@ export default {
 <style scoped>
 .footer {
   background-color: transparent;
-  text-align: center;
+  text-align: right;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -62,8 +62,9 @@ export default {
 
 .social-icons {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+  padding-left: 10px;
 }
 
 .social-icons img {

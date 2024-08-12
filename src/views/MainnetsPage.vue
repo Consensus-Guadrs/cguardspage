@@ -125,9 +125,8 @@ export default {
   text-align: left;
   color: #ffffff;
   max-width: 70%;
-  /* Set a maximum width for the details */
   word-wrap: break-word;
-  /* Break long words */
+  margin-bottom: 20px;
 }
 
 .blockchain p {

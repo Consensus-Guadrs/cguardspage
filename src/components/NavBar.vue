@@ -4,7 +4,16 @@
       <a href="/"><img src="/logo.png" alt="Logo"></a>
       <p>Blockchain's power for big goals</p>
     </div>
+    <div class="links">
+      <a :href="contactLinks.github" target="_blank">
+        <img :src="githubIcon" alt="GitHub">
+      </a>
+      <a :href="contactLinks.gmail" target="_blank">
+        <img :src="emailIcon" alt="Email">
+      </a>
+    </div>
     <ul :class="['nav-links', { 'nav-active': isNavActive }]">
+      <li><router-link to="/" @click="closeNav">Home</router-link></li>
       <li><router-link to="/validate" @click="closeNav">Validate</router-link></li>
       <li><router-link to="/mainnets" @click="closeNav">Mainnets</router-link></li>
       <li><router-link to="/testnets" @click="closeNav">Testnets</router-link></li>
@@ -20,12 +29,30 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'NavBar',
   data() {
     return {
       isNavActive: false,
+      contactLinks: {}
     };
+  },
+  computed: {
+    githubIcon() {
+      return `${window.location.origin}/github-mark-white.svg`;
+    },
+    emailIcon() {
+      return `${window.location.origin}/email.png`;
+    }
+  },
+  created() {
+    axios.get('/BlockchainsData.json').then(response => {
+      this.contactLinks = response.data.contactLinks;
+    }).catch(error => {
+      console.error('Error fetching data:', error);
+    });
   },
   methods: {
     toggleNav() {
@@ -44,25 +71,37 @@ export default {
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
-  width: 98%;
+  width: 100%;
   position: fixed;
   top: 0;
   z-index: 1000;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 .logo {
+  display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
+}
+
+.links {
+  display: flex;
+  margin-left: auto;
 }
 
 .logo img {
   height: 40px;
 }
 
+.links img {
+  height: 25px;
+  margin: 0px 30px;
+}
+
 .logo p {
-  color: rgba(255, 255, 255, 0.466);
-  margin: 5px 0 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 5px 0 0;
   font-size: 12px;
   font-weight: bold;
   text-align: center;
@@ -72,10 +111,11 @@ export default {
   list-style: none;
   display: flex;
   margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
-  margin-left: 5px;
+  margin-left: 20px;
 }
 
 .nav-links li a {
@@ -96,8 +136,6 @@ export default {
   display: none;
   cursor: pointer;
   flex-direction: column;
-  z-index: 1001;
-  /* Ensure burger is on top */
 }
 
 .burger div {
@@ -132,13 +170,7 @@ export default {
   }
 
   .nav-links li {
-    opacity: 0;
-    margin-top: 50px;
-  }
-
-  .nav-links.nav-active li {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+    margin-top: 20px;
   }
 
   .burger {
@@ -149,18 +181,19 @@ export default {
     height: 30px;
   }
 
-  .logo p {
-    font-size: 10px;
-  }
+  .links img {
+  height: 20px;
+  margin: 0px 20px;
+}
 
-  .logo {
-    margin: 3px;
+  .logo p {
+    font-size: 0.5em;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
   .navbar {
-    padding: 10px;
+    padding: 15px;
   }
 
   .logo img {
@@ -168,7 +201,7 @@ export default {
   }
 
   .logo p {
-    font-size: 12px;
+    font-size: 0.6em;
   }
 
   .nav-links {
@@ -177,8 +210,7 @@ export default {
   }
 
   .nav-links li {
-    margin-left: 3px;
-    margin-right: 3px;
+    margin: 0 5px;
   }
 
   .nav-links li a {
@@ -187,31 +219,7 @@ export default {
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .navbar {
-    padding: 15px;
-  }
-
-  .logo img {
-    height: 40px;
-  }
-
-  .logo p {
-    font-size: 14px;
-  }
-
-  .nav-links li {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-
-  .nav-links li a {
-    font-size: 14px;
-    padding: 8px 10px;
-  }
-}
-
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .navbar {
     padding: 20px;
   }
@@ -221,12 +229,11 @@ export default {
   }
 
   .logo p {
-    font-size: 16px;
+    font-size: 0.8em;
   }
 
   .nav-links li {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0 10px;
   }
 
   .nav-links li a {

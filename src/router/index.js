@@ -16,8 +16,7 @@ const routes = [
   { path: '/technical-contributions', name: 'TechnicalContributions', component: TechnicalContributionsPage },
   { path: '/validate', name: 'Validate', component: ValidatePage },
   { path: '/validate/:name', name: 'BlockchainDetails', component: BlockchainDetailsPage, props: true },
-  { path: '/blockchains_table', name: 'BlockchainsTable', component: BlockchainsTable }
-
+  { path: '/blockchains-table', name: 'BlockchainsTable', component: BlockchainsTable }
 ];
 
 const router = createRouter({

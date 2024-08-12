@@ -1,7 +1,7 @@
 {
   "blockchains": [
     {
-      "name": "CosmosHub",
+      "name": "Cosmos Hub",
       "description": "Cosmos is a decentralized network of independent parallel blockchains. ATOM, the native cryptocurrency of the Cosmos network, is essential for achieving the project's goal of creating an 'Internet of Blockchains.' Launched in 2019, Cosmos aims to solve the scalability, usability, and interoperability issues prevalent in existing blockchain ecosystems. The Cosmos Hub, the central blockchain of the network, uses ATOM for transaction fees, staking, and governance. By staking ATOM, users can earn rewards and participate in governance, influencing decisions on network upgrades and changes.",
       "cryptocurrency": "ATOM",
       "price_api": "https://api.coingecko.com/api/v3/simple/price?include_24hr_change=true&vs_currencies=usd,%20cny&ids=cosmos",
@@ -465,7 +465,7 @@
       ],
       "installation_tutorials": [
         {
-          "tutorial": "Setting up a Celestia validator node (officail)",
+          "tutorial": "Setting up a Celestia validator node (official)",
           "link": "https://docs.celestia.org/nodes/validator-node"
         },
         {
@@ -1006,7 +1006,7 @@
         },
         {
           "tutorial": "Become a Validator Mainnet (official)",
-          "link": "https://docs.nibiru.fi/validators/upgrades"
+          "link": "https://nibiru.fi/docs/run-nodes/validators/validator-mainnet.html"
         },
         {
           "tutorial": "Polkachu tutorial node installation guides",
@@ -1247,7 +1247,7 @@
           "contribution": "Building decentralized applications (dApps) that leverage Archway reward system, focusing on use cases that generate high transaction volumes or bring significant value to the network, such as DeFi platforms, NFT marketplaces, or decentralized identity solutions."
         },
         {
-          "contribution": "Enhancing the Archway SDK by adding new features, optimizing existing functionalities, and ensuring it is developer-friendly. This could include better documentation, examples, and tools to streamline dApp development.."
+          "contribution": "Enhancing the Archway SDK by adding new features, optimizing existing functionalities, and ensuring it is developer-friendly. This could include better documentation, examples, and tools to streamline dApp development."
         },
         {
           "contribution": "Develop modules or tools that enhance interoperability with other blockchains, particularly those within the Cosmos ecosystem, enabling seamless cross-chain asset transfers and communication."
@@ -1348,7 +1348,7 @@
       ],
       "technical_contributions": [
         {
-          "contribution": "Improving existing developer tools, libraries, and SDKs to simplify the process of building, testing, and deploying dApps on XPLA, making the platform more accessible to new developers.."
+          "contribution": "Improving existing developer tools, libraries, and SDKs to simplify the process of building, testing, and deploying dApps on XPLA, making the platform more accessible to new developers."
         },
         {
           "contribution": "Implementation of advanced security and scalability features for the network."
@@ -1453,9 +1453,6 @@
           "contribution": "Creating and deploy autonomous economic agents that utilize Fetch.ai framework to perform specific tasks such as data exchange, automated trading, or decentralized logistics, contributing to the ecosystem of intelligent agents."
         },
         {
-          "contribution": "Improving existing developer tools, libraries, and SDKs to simplify the process of building, testing, and deploying dApps on XPLA, making the platform more accessible to new developers.."
-        },
-        {
           "contribution": "Making docker images and ansible scripts for easy installation nodes."
         },
         {
@@ -1465,7 +1462,7 @@
           "contribution": "Contribute to the onboarding process for new validators by developing comprehensive guides, best practices, and troubleshooting resources, helping to expand the validator community."
         },
         {
-          "contribution": "Actively engage in Fetch.ai governance by reviewing, proposing, and voting on network upgrades, protocol changes, and community initiatives, using your technical expertise to influence the network's future direction."
+          "contribution": "Actively engage in network governance by reviewing, proposing, and voting on network upgrades, protocol changes, and community initiatives, using your technical expertise to influence the network's future direction."
         },
         {
           "contribution": "Operating a securing and reliable validator node, contributing to the network stability and security. Focus on maintaining high uptime and implementing strong security measures."
@@ -1741,35 +1738,10 @@
         "ram": "",
         "ssd": ""
       },
-      "ecosystem": [
-        {
-          "name": "",
-          "type": "",
-          "link": ""
-        }
-      ],
-      "technical_contributions": [
-        {
-          "contribution": ""
-        },
-        {
-          "contribution": ""
-        }
-      ],
-      "community_contributions": [
-        {
-          "contribution": ""
-        },
-        {
-          "contribution": ""
-        }
-      ],
-      "installation_tutorials": [
-        {
-          "tutorial": "",
-          "link": ""
-        }
-      ]
+      "ecosystem": "",
+      "technical_contributions": "",
+      "community_contributions": "",
+      "installation_tutorials": ""
     },
     {
       "name": "Quasar",
@@ -2062,7 +2034,7 @@
       ]
     },
     {
-      "name": "Gravity Bridge",
+      "name": "Gravity-Bridge",
       "description": "Gravity Bridge is a decentralized blockchain built on the Cosmos SDK, designed to facilitate interoperability between the Cosmos ecosystem and Ethereum, as well as other Ethereum Virtual Machine (EVM) chains. It acts as a neutral bridge, allowing assets to be transferred securely and efficiently between these networks, using Inter-Blockchain Communication (IBC) for Cosmos-based tokens and Gravity Bridge's Ethereum contracts for ERC20 tokens. This enables users to move assets like ATOM or USDC between Cosmos and Ethereum, unlocking liquidity and expanding the utility of these assets across both ecosystems.",
       "cryptocurrency": "GRAV",
       "logo": "gravity-bridge.png",
@@ -2392,7 +2364,6 @@
           "tutorial": "Polkachu tutorial node installation guides",
           "link": "https://polkachu.com/installation/omniflix"
         }
-        
       ]
     },
     {
@@ -2449,7 +2420,7 @@
       ],
       "community_contributions": [
         {
-          "contribution": "Providing grants for projects that support Juno and the Cosmos ecosystem."
+          "contribution": "Providing grants for projects that support ecosystem."
         },
         {
           "contribution": "Organizing events and hackathons to promote blockchain education and development within the community."
@@ -2493,6 +2464,475 @@
         {
           "tutorial": "Polkachu tutorial node installation guides",
           "link": "https://polkachu.com/installation/juno"
+        }
+      ]
+    },
+    {
+      "name": "Persistence",
+      "description": "Persistence is a blockchain network designed to enable inter-blockchain communication and asset tokenization with a focus on decentralized finance (DeFi) and real-world asset integration. It utilizes a proof-of-stake consensus mechanism and is built on the Cosmos SDK, allowing it to benefit from Cosmos interoperability features. Persistence aims to facilitate the seamless transfer and management of assets across different blockchain ecosystems, enhancing liquidity and efficiency in the DeFi space.",
+      "cryptocurrency": "XPRT",
+      "price_api": "",
+      "logo": "persistence.png",
+      "website": "https://persistence.one/",
+      "github": "https://github.com/persistenceOne",
+      "mintscan": "https://www.mintscan.io/persistence/",
+      "pingpub": "https://ping.pub/persistence/",
+      "documentation": "https://docs.persistence.one/",
+      "twitter": "https://twitter.com/PersistenceOne",
+      "discord": "https://discord.com/invite/vyvp3scWnH",
+      "telegram": "https://t.me/persistenceone",
+      "api_validators": "https://persistence-rest.publicnode.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 100,
+      "max_validators": 100,
+      "requirements": {
+        "cpu": "4 cores",
+        "ram": "16GB",
+        "ssd": "500GB"
+      },
+      "ecosystem": [
+        {
+          "name": "Persistence Dex",
+          "type": "Dex",
+          "link": "https://app.persistence.one/"
+        },
+        {
+          "name": "Persistence Wallet",
+          "type": "Wallet",
+          "link": "https://wallet.persistence.one/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Developing bridges or protocols to improve cross-chain communication between Persistence and other blockchain networks."
+        },
+        {
+          "contribution": "Performing thorough audits of smart contracts and the overall codebase to identify and fix vulnerabilities."
+        },
+        {
+          "contribution": "Operating a validator node on Persistence, ensuring high availability, security, and compliance with network updates. This contribution helps maintain the stability and security of the network."
+        },
+        {
+          "contribution": "Creating and enhancing monitoring tools that help validators track node performance, manage staking operations, and detect potential issues, contributing to the overall health of the network."
+        },
+        {
+          "contribution": "Developing comprehensive guides, best practices, and troubleshooting resources for new validators, making it easier for them to join and maintain their nodes on the network."
+        },
+        {
+          "contribution": "Actively participating in governance by proposing, reviewing, and voting on protocol upgrades, parameter changes, and community initiatives. Use your technical expertise to influence the network's evolution and ensure it aligns with community goals."
+        },
+        {
+          "contribution": "Making docker images and ansible scripts for easy installation nodes."
+        },
+        {
+          "contribution": "Building and refine user interfaces for decentralized applications (dApps) on the Persistence network."
+        },
+        {
+          "contribution": "Developing integration modules for real-world assets to be tokenized and managed on Persistence."
+        },
+        {
+          "contribution": "Developing testing frameworks or tools to ensure the reliability and robustness of applications on Persistence."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Providing grants for projects that support ecosystem."
+        },
+        {
+          "contribution": "Organizing events and hackathons to promote blockchain education and development within the community."
+        },
+        {
+          "contribution": "Providing extensive documentation and support for developers building on the network."
+        },
+        {
+          "contribution": "Organizing local meetups and workshops: hosting in-person or virtual events to bring together developers, validators, enthusiasts, and newcomers to discuss and learn about the ecosystem."
+        },
+        {
+          "contribution": "Creating educational content: writing blog posts, tutorials, or create video content that explains various and/or dificults aspects of network, such as how to set up a node and how to use tools of Network."
+        },
+        {
+          "contribution": "Moderating online forums, groups, chats, communities: helping manage and moderate discussions in forums, Reddit, Discord channels, or Telegram groups to keep the community engaged and informed."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        },
+        {
+          "contribution": "Providing feedback on new features and projects: actively participating in testnets, beta releases, or new projects within the ecosystem, providing constructive feedback to developers and teams."
+        },
+        {
+          "contribution": "Mentoring newcomers to the ecosystem: guidance and support to new developers, validators, users entering the ecosystem, helping them navigate the technology and community resources."
+        },
+        {
+          "contribution": "Improving the design of informational and ecosystem websites, help create adaptive website pages and pages for people with special needs."
+        },
+        {
+          "contribution": "Actively participate in the governance of the network by voting on proposals, discussing important issues, and encouraging others to get involved in the decision-making process."
+        },
+        {
+          "contribution": "Collaborate with the core team or other community members to design and execute marketing campaigns, outreach programs, or partnerships that promote the network."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Setting up a Persistence mainnet node (official)",
+          "link": "https://docs.persistence.one/build/nodes-and-endpoints/join-mainnet"
+        },
+        {
+          "tutorial": "Run a validator node (official)",
+          "link": "https://docs.persistence.one/build/validators/mainnet-validator-setup"
+        },
+        {
+          "tutorial": "Polkachu tutorial node installation guides",
+          "link": "https://polkachu.com/installation/persistence"
+        }
+      ]
+    },
+    {
+      "name": "Mars Protocol",
+      "description": "Mars Protocol is a decentralized lending and borrowing platform built on the Cosmos blockchain ecosystem. It aims to provide a secure and efficient way for users to access credit and liquidity by leveraging smart contracts and inter-blockchain communication. The protocol supports various assets and integrates with other Cosmos-based projects to enhance its utility and reach.",
+      "cryptocurrency": "MARS",
+      "price_api": "",
+      "logo": "mars.png",
+      "website": "https://marsprotocol.io/",
+      "github": "https://github.com/mars-protocol",
+      "mintscan": "https://www.mintscan.io/mars-protocol/",
+      "pingpub": "https://ping.pub/mars",
+      "documentation": "https://docs.marsprotocol.io/",
+      "twitter": "https://twitter.com/mars_protocol",
+      "discord": "https://discord.com/invite/marsprotocol",
+      "telegram": "https://t.me/martiannews",
+      "api_validators": "https://mars-rest.publicnode.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 54,
+      "max_validators": 75,
+      "requirements": {
+        "cpu": "8 cores",
+        "ram": "64GB",
+        "ssd": "4TB"
+      },
+      "ecosystem": [
+        {
+          "name": "The Red Bank",
+          "type": "DeFi",
+          "link": "https://app.marsprotocol.io/lend"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Performing thorough audits of smart contracts and the overall codebase to identify and fix vulnerabilities."
+        },
+        {
+          "contribution": "Operating a validator node, ensuring high availability, security, and compliance with network updates. This contribution helps maintain the stability and security of the network."
+        },
+        {
+          "contribution": "Creating and enhancing monitoring tools that help validators track node performance, manage staking operations, and detect potential issues, contributing to the overall health of the network."
+        },
+        {
+          "contribution": "Developing comprehensive guides, best practices, and troubleshooting resources for new validators, making it easier for them to join and maintain their nodes on the network."
+        },
+        {
+          "contribution": "Actively participating in governance by proposing, reviewing, and voting on protocol upgrades, parameter changes, and community initiatives. Use your technical expertise to influence the network's evolution and ensure it aligns with community goals."
+        },
+        {
+          "contribution": "Making docker images and ansible scripts for easy installation nodes."
+        },
+        {
+          "contribution": "Building and refine user interfaces for decentralized applications (dApps) on the network."
+        },
+        {
+          "contribution": "Developing integration modules for real-world assets to be tokenized and managed."
+        },
+        {
+          "contribution": "Developing testing frameworks or tools to ensure the reliability and robustness of applications."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Providing grants for projects that support ecosystem."
+        },
+        {
+          "contribution": "Organizing events and hackathons to promote blockchain education and development within the community."
+        },
+        {
+          "contribution": "Providing extensive documentation and support for developers building on the network."
+        },
+        {
+          "contribution": "Organizing local meetups and workshops: hosting in-person or virtual events to bring together developers, validators, enthusiasts, and newcomers to discuss and learn about the ecosystem."
+        },
+        {
+          "contribution": "Creating educational content: writing blog posts, tutorials, or create video content that explains various and/or dificults aspects of network, such as how to set up a node and how to use tools of Network."
+        },
+        {
+          "contribution": "Moderating online forums, groups, chats, communities: helping manage and moderate discussions in forums, Reddit, Discord channels, or Telegram groups to keep the community engaged and informed."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        },
+        {
+          "contribution": "Providing feedback on new features and projects: actively participating in testnets, beta releases, or new projects within the ecosystem, providing constructive feedback to developers and teams."
+        },
+        {
+          "contribution": "Mentoring newcomers to the ecosystem: guidance and support to new developers, validators, users entering the ecosystem, helping them navigate the technology and community resources."
+        },
+        {
+          "contribution": "Improving the design of informational and ecosystem websites, help create adaptive website pages and pages for people with special needs."
+        },
+        {
+          "contribution": "Actively participate in the governance of the network by voting on proposals, discussing important issues, and encouraging others to get involved in the decision-making process."
+        },
+        {
+          "contribution": "Collaborate with the core team or other community members to design and execute marketing campaigns, outreach programs, or partnerships that promote the network."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Setting up a Persistence mainnet node (official)",
+          "link": "https://docs.marsprotocol.io/docs/validate/node-operators/setting-up-a-node"
+        },
+        {
+          "tutorial": "Run a validator node (official)",
+          "link": "https://docs.marsprotocol.io/docs/validate/validators/becoming-a-validator"
+        },
+        {
+          "tutorial": "Polkachu tutorial node installation guides",
+          "link": "https://polkachu.com/installation/mars"
+        }
+      ]
+    },
+    {
+      "name": "Bitsong",
+      "description": "Bitsong is a blockchain network focused on the music industry, aiming to create a decentralized ecosystem for music distribution and rights management. Built on the Cosmos SDK, it facilitates direct interactions between artists and listeners, allowing for better revenue sharing and transparency. The platform also integrates features for music streaming and content monetization, using its native token to enable transactions and governance.",
+      "cryptocurrency": "BTSG",
+      "price_api": "",
+      "logo": "bitsong.svg",
+      "website": "https://bitsong.io/",
+      "github": "https://github.com/BitSongOfficial",
+      "mintscan": "https://www.mintscan.io/bitsong/",
+      "pingpub": "https://ping.pub/bitsong/",
+      "documentation": "https://docs.bitsong.io/",
+      "twitter": "https://twitter.com/BitSongOfficial",
+      "discord": "https://discord.com/invite/mZC9Yk3",
+      "telegram": "https://t.me/BitSongOfficial",
+      "api_validators": "https://lcd.explorebitsong.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 86,
+      "max_validators": 100,
+      "requirements": {
+        "cpu": "",
+        "ram": "",
+        "ssd": ""
+      },
+      "ecosystem": [
+        {
+          "name": "Bitsong Studio",
+          "type": "dApp",
+          "link": "https://bitsong.studio/"
+        },
+        {
+          "name": "Sinfonia",
+          "type": "Dex",
+          "link": "https://app.sinfonia.zone/"
+        },
+        {
+          "name": "Bitsong Play",
+          "type": "dApp radio",
+          "link": "https://play.bitsong.io/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Developing decentralized applications that enhance music streaming, fan engagement, or artist monetization."
+        },
+        {
+          "contribution": "Building APIs to facilitate interaction between Bitsong and other platforms or services in the music industry."
+        },
+        {
+          "contribution": "Designing and implement intuitive user interfaces for artists, listeners, and other stakeholders within the Bitsong ecosystem."
+        },
+        {
+          "contribution": "Creating testing frameworks and tools to ensure the reliability and robustness of dApps and smart contracts."
+        },
+        {
+          "contribution": "Operating a validator node, ensuring high availability, security, and compliance with network updates. This contribution helps maintain the stability and security of the network."
+        },
+        {
+          "contribution": "Creating and enhancing monitoring tools that help validators track node performance, manage staking operations, and detect potential issues, contributing to the overall health of the network."
+        },
+        {
+          "contribution": "Developing comprehensive guides, best practices, and troubleshooting resources for new validators, making it easier for them to join and maintain their nodes on the network."
+        },
+        {
+          "contribution": "Actively participating in governance by proposing, reviewing, and voting on protocol upgrades, parameter changes, and community initiatives. Use your technical expertise to influence the network's evolution and ensure it aligns with community goals."
+        },
+        {
+          "contribution": "Making docker images and ansible scripts for easy installation nodes."
+        },
+        {
+          "contribution": "Building and refine user interfaces for decentralized applications (dApps) on the network."
+        },
+        {
+          "contribution": "Developing integration modules for real-world assets to be tokenized and managed."
+        },
+        {
+          "contribution": "Developing testing frameworks or tools to ensure the reliability and robustness of applications."
+        },
+        {
+          "contribution": "Assist in implementing and testing protocol upgrades or changes to enhance network capabilities."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Providing grants for projects that support ecosystem."
+        },
+        {
+          "contribution": "Organizing events and hackathons to promote blockchain education and development within the community."
+        },
+        {
+          "contribution": "Providing extensive documentation and support for developers building on the network."
+        },
+        {
+          "contribution": "Organizing local meetups and workshops: hosting in-person or virtual events to bring together developers, validators, enthusiasts, and newcomers to discuss and learn about the ecosystem."
+        },
+        {
+          "contribution": "Creating educational content: writing blog posts, tutorials, or create video content that explains various and/or dificults aspects of network, such as how to set up a node and how to use tools of Network."
+        },
+        {
+          "contribution": "Moderating online forums, groups, chats, communities: helping manage and moderate discussions in forums, Reddit, Discord channels, or Telegram groups to keep the community engaged and informed."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        },
+        {
+          "contribution": "Providing feedback on new features and projects: actively participating in testnets, beta releases, or new projects within the ecosystem, providing constructive feedback to developers and teams."
+        },
+        {
+          "contribution": "Mentoring newcomers to the ecosystem: guidance and support to new developers, validators, users entering the ecosystem, helping them navigate the technology and community resources."
+        },
+        {
+          "contribution": "Improving the design of informational and ecosystem websites, help create adaptive website pages and pages for people with special needs."
+        },
+        {
+          "contribution": "Actively participate in the governance of the network by voting on proposals, discussing important issues, and encouraging others to get involved in the decision-making process."
+        },
+        {
+          "contribution": "Collaborate with the core team or other community members to design and execute marketing campaigns, outreach programs, or partnerships that promote the network."
+        },
+        {
+          "contribution": "Using the platform, creating new content on platform, intoducing platform to authors."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Run a validator node (official)",
+          "link": "https://docs.bitsong.io/blockchain/install-go-bitsong"
+        },
+        {
+          "tutorial": "Polkachu tutorial node installation guides",
+          "link": "https://polkachu.com/installation/bitsong"
+        }
+      ]
+    },
+    {
+      "name": "KYVE",
+      "description": "KYVE, the Web3 data lake solution, is a protocol that enables data providers to standardize, validate, and permanently store blockchain data streams. By leveraging permanent data storage solutions like Arweave, KYVE’s Cosmos SDK chain creates permanent backups and ensures the scalability, immutability, and availability of these resources over time. KYVE’s network is powered by decentralized uploaders and validators funded by $KYVE tokens and aims to operate as a DAO (Decentralized Autonomous Organization) in the near future. This past year KYVE has gained major support, currently backed by top VCs, including Hypersphere Ventures, Coinbase Ventures, Mechanism Capital, CMS Holdings, and blockchains such as Arweave, Avalanche, Solana, Interchain, and NEAR.",
+      "cryptocurrency": "KYVE",
+      "price_api": "",
+      "logo": "kyve.svg",
+      "website": "https://www.kyve.network/",
+      "github": "https://github.com/KYVENetwork",
+      "mintscan": "https://www.mintscan.io/kyve/",
+      "pingpub": "https://ping.pub/kyve",
+      "documentation": "https://docs.kyve.network/",
+      "twitter": "https://x.com/KYVENetwork",
+      "discord": "https://discord.com/invite/PATvZvEmxF",
+      "telegram": "https://t.me/kyvenet",
+      "api_validators": "https://api.kyve.network/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 86,
+      "max_validators": 100,
+      "requirements": {
+        "cpu": "2 cores",
+        "ram": "16GB",
+        "ssd": "250GB"
+      },
+      "ecosystem": [
+        {
+          "name": "Kyve App",
+          "type": "Data Provider and Storage",
+          "link": "https://app.kyve.network/#/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Develop and optimize methods for efficient and secure data storage on the KYVE blockchain."
+        },
+        {
+          "contribution": "Creating bridges or APIs to integrate KYVE with other blockchain networks and systems."
+        },
+        {
+          "contribution": "Designing intuitive interfaces for users to interact with KYVE data storage and management features."
+        },
+        {
+          "contribution": "Creating testing frameworks and tools to ensure the reliability and robustness of dApps and smart contracts."
+        },
+        {
+          "contribution": "Operating a validator node, ensuring high availability, security, and compliance with network updates. This contribution helps maintain the stability and security of the network."
+        },
+        {
+          "contribution": "Creating and enhancing monitoring tools that help validators track node performance, manage staking operations, and detect potential issues, contributing to the overall health of the network."
+        },
+        {
+          "contribution": "Developing comprehensive guides, best practices, and troubleshooting resources for new validators, making it easier for them to join and maintain their nodes on the network."
+        },
+        {
+          "contribution": "Actively participating in governance by proposing, reviewing, and voting on protocol upgrades, parameter changes, and community initiatives. Use your technical expertise to influence the network's evolution and ensure it aligns with community goals."
+        },
+        {
+          "contribution": "Making docker images and ansible scripts for easy installation nodes."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Providing grants for projects that support ecosystem."
+        },
+        {
+          "contribution": "Organizing events and hackathons to promote blockchain education and development within the community."
+        },
+        {
+          "contribution": "Providing extensive documentation and support for developers building on the network."
+        },
+        {
+          "contribution": "Organizing local meetups and workshops: hosting in-person or virtual events to bring together developers, validators, enthusiasts, and newcomers to discuss and learn about the ecosystem."
+        },
+        {
+          "contribution": "Creating educational content: writing blog posts, tutorials, or create video content that explains various and/or dificults aspects of network, such as how to set up a node and how to use tools of Network."
+        },
+        {
+          "contribution": "Moderating online forums, groups, chats, communities: helping manage and moderate discussions in forums, Reddit, Discord channels, or Telegram groups to keep the community engaged and informed."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        },
+        {
+          "contribution": "Providing feedback on new features and projects: actively participating in testnets, beta releases, or new projects within the ecosystem, providing constructive feedback to developers and teams."
+        },
+        {
+          "contribution": "Mentoring newcomers to the ecosystem: guidance and support to new developers, validators, users entering the ecosystem, helping them navigate the technology and community resources."
+        },
+        {
+          "contribution": "Improving the design of informational and ecosystem websites, help create adaptive website pages and pages for people with special needs."
+        },
+        {
+          "contribution": "Actively participate in the governance of the network by voting on proposals, discussing important issues, and encouraging others to get involved in the decision-making process."
+        },
+        {
+          "contribution": "Collaborate with the core team or other community members to design and execute marketing campaigns, outreach programs, or partnerships that promote the network."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Run a validator node (official)",
+          "link": "https://docs.kyve.network/run-a-node/"
+        },
+        {
+          "tutorial": "Polkachu tutorial node installation guides",
+          "link": "https://polkachu.com/installation/kyve"
         }
       ]
     }

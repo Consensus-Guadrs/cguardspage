@@ -282,6 +282,7 @@ button.view-all-button:hover {
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .validate {
     padding: 10px;
+    margin-top: 30px;
   }
 
   .blockchain-link {
@@ -322,6 +323,7 @@ button.view-all-button:hover {
 @media (min-width: 1200px) {
   .validate {
     padding: 20px;
+    margin-top: 30px;
   }
 
   .blockchain-link {
