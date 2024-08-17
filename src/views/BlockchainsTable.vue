@@ -15,6 +15,7 @@
                         <th>SSD</th>
                         <th>Quantity of validators</th>
                         <th>Minimum tokens in active set</th>
+                        <th>Enter cost</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,6 +28,7 @@
                         <td>{{ blockchain.requirements.ssd }}</td>
                         <td>{{ blockchain.quantityOfValidators }}</td>
                         <td>{{ blockchain.minimumTokensToBeActive }}</td>
+                        <td>{{ blockchain.enterCost ? `$${blockchain.enterCost.toFixed(2)}` : 'Loading...' }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -57,31 +59,15 @@ export default {
             .then(response => {
                 this.blockchains = response.data.blockchains;
                 this.blockchains.forEach(blockchain => {
-                    if (blockchain.api_validators) {
-                        axios.get(blockchain.api_validators)
-                            .then(response => {
-                                if (response && response.data.validators) {
-                                    const validators = response.data.validators;
-                                    const votingPower = Number(validators[validators.length - 1]?.voting_power) + 2;
-                                    let total = response.data.pagination.total;
-
-                                    if (total === 0 || total === undefined) {
-                                        total = validators.length;
-                                    }
-
-                                    blockchain.quantityOfValidators = `${total} / ${blockchain.max_validators}`;
-                                    blockchain.minimumTokensToBeActive = votingPower;
-                                } else if (blockchain.current_amount_of_validators) {
-                                    blockchain.quantityOfValidators = `${blockchain.current_amount_of_validators} / ${blockchain.max_validators}`;
-                                }
-                            })
-                            .catch(error => {
-                                console.error(`Error fetching validators data for ${blockchain.name}:`, error);
-                            });
-                    } else {
-                        blockchain.quantityOfValidators = blockchain.current_amount_of_validators ? `${blockchain.current_amount_of_validators} / ${blockchain.max_validators}` : '';
-                        blockchain.minimumTokensToBeActive = '';
-                    }
+                    this.fetchValidatorData(blockchain)
+                        .then(() => {
+                            if (blockchain.minimumTokensToBeActive) {
+                                this.fetchTokenPrice(blockchain);
+                            }
+                        })
+                        .catch(error => {
+                            console.error(`Error processing blockchain ${blockchain.name}:`, error);
+                        });
                 });
             })
             .catch(error => {
@@ -89,12 +75,73 @@ export default {
             });
     },
     methods: {
+        fetchValidatorData(blockchain) {
+            return new Promise((resolve, reject) => {
+                if (blockchain.api_validators) {
+                    axios.get(blockchain.api_validators, {
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(response => {
+                            if (response && response.data.validators) {
+                                const validators = response.data.validators;
+                                const votingPower = Number(validators[validators.length - 1]?.voting_power) + 2;
+                                let total = response.data.pagination.total;
+
+                                if (total === 0 || total === undefined) {
+                                    total = validators.length;
+                                }
+
+                                blockchain.quantityOfValidators = `${total} / ${blockchain.max_validators}`;
+                                blockchain.minimumTokensToBeActive = votingPower;
+                                resolve();
+                            } else if (blockchain.current_amount_of_validators) {
+                                blockchain.quantityOfValidators = `${blockchain.current_amount_of_validators} / ${blockchain.max_validators}`;
+                                resolve();
+                            } else {
+                                resolve();
+                            }
+                        })
+                        .catch(error => {
+                            console.error(`Error fetching validators data for ${blockchain.name}:`, error);
+                            reject(error);
+                        });
+                } else {
+                    blockchain.quantityOfValidators = blockchain.current_amount_of_validators ? `${blockchain.current_amount_of_validators} / ${blockchain.max_validators}` : '';
+                    blockchain.minimumTokensToBeActive = '';
+                    resolve();
+                }
+            });
+        },
+        fetchTokenPrice(blockchain) {
+            const apiUrl = `https://api-osmosis.imperator.co/tokens/v2/price/${blockchain.cryptocurrency.toLowerCase()}`;
+            axios.get(apiUrl, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    const tokenPrice = response.data.price;
+                    if (tokenPrice) {
+                        blockchain.enterCost = tokenPrice * blockchain.minimumTokensToBeActive;
+                    } else {
+                        blockchain.enterCost = null;
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error fetching price data for ${blockchain.name}:`, error);
+                });
+        },
         goToDetails(name) {
             this.$router.push({ name: 'BlockchainDetails', params: { name } });
         }
     }
 };
 </script>
+
 
 <style scoped>
 .blockchains-table {
