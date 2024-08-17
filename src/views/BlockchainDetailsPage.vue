@@ -17,20 +17,13 @@
     </div>
     <div class="details-section">
       <h3>Useful links</h3>
-      <p v-if="blockchain.github"><strong>Github:</strong> <a :href="blockchain.github" target="_blank">{{
-        blockchain.github }}</a></p>
-      <p v-if="blockchain.mintscan"><strong>Mintscan:</strong> <a :href="blockchain.mintscan" target="_blank">{{
-        blockchain.mintscan }}</a></p>
-      <p v-if="blockchain.pingpub"><strong>Ping.pub:</strong> <a :href="blockchain.pingpub" target="_blank">{{
-        blockchain.pingpub }}</a></p>
-      <p v-if="blockchain.documentation"><strong>Docs:</strong> <a :href="blockchain.documentation" target="_blank">{{
-        blockchain.documentation }}</a></p>
-      <p v-if="blockchain.twitter"><strong>Twitter (X):</strong> <a :href="blockchain.twitter" target="_blank">{{
-        blockchain.twitter }}</a></p>
-      <p v-if="blockchain.discord"><strong>Discord:</strong> <a :href="blockchain.discord" target="_blank">{{
-        blockchain.discord}}</a></p>
-      <p v-if="blockchain.telegram"><strong>Telegram:</strong> <a :href="blockchain.telegram" target="_blank">{{
-        blockchain.telegram }}</a></p>
+      <p v-if="blockchain.github"><strong>Github:</strong> <a :href="blockchain.github" target="_blank">{{ blockchain.github }}</a></p>
+      <p v-if="blockchain.mintscan"><strong>Mintscan:</strong> <a :href="blockchain.mintscan" target="_blank">{{ blockchain.mintscan }}</a></p>
+      <p v-if="blockchain.pingpub"><strong>Ping.pub:</strong> <a :href="blockchain.pingpub" target="_blank">{{ blockchain.pingpub }}</a></p>
+      <p v-if="blockchain.documentation"><strong>Docs:</strong> <a :href="blockchain.documentation" target="_blank">{{ blockchain.documentation }}</a></p>
+      <p v-if="blockchain.twitter"><strong>Twitter (X):</strong> <a :href="blockchain.twitter" target="_blank">{{ blockchain.twitter }}</a></p>
+      <p v-if="blockchain.discord"><strong>Discord:</strong> <a :href="blockchain.discord" target="_blank">{{ blockchain.discord}}</a></p>
+      <p v-if="blockchain.telegram"><strong>Telegram:</strong> <a :href="blockchain.telegram" target="_blank">{{ blockchain.telegram }}</a></p>
     </div>
     <div v-if="blockchain.ecosystem" class="details-section">
       <h3>Ecosystem</h3>
@@ -44,6 +37,11 @@
       <h3>Validators information</h3>
       <p><strong>Quantity of validators:</strong> {{ quantityOfValidators }}</p>
       <p><strong>Minimum tokens in active set:</strong> {{ minimumTokensToBeActive }}</p>
+      <p v-if="enterCost !== null"><strong>Cost of minimum tokens</strong> ${{ enterCost.toFixed(2) }}</p>
+      <p v-else><strong>Cost of minimum tokens:</strong> Loading...</p>
+      <p v-if="emptyPlaces !== null"><strong>Empty places:</strong> {{ emptyPlaces }}</p>
+      <p v-else><strong>Empty places:</strong> Loading...</p>
+      <p v-if="manualData" style="color: red;"><strong>Data is entered manually and may not be up-to-date, check the information in explorer.</strong></p>
     </div>
     <div v-if="blockchain.requirements.cpu || blockchain.requirements.ram || blockchain.requirements.ssd" class="details-section">
       <h3>System requirements for nodes</h3>
@@ -90,7 +88,10 @@ export default {
     return {
       blockchain: null,
       quantityOfValidators: null,
-      minimumTokensToBeActive: null
+      minimumTokensToBeActive: null,
+      enterCost: null,
+      emptyPlaces: null,
+      manualData: false
     };
   },
   created() {
@@ -98,34 +99,92 @@ export default {
     axios.get('/validate.json')
       .then(response => {
         this.blockchain = response.data.blockchains.find(bc => bc.name === blockchainName);
-        if (this.blockchain && this.blockchain.api_validators) {
-          return axios.get(this.blockchain.api_validators);
-        }
-      })
-      .then(response => {
-        if (response && response.data.validators) {
-          const validators = response.data.validators;
-          const votingPower = validators[validators.length - 1]?.voting_power;
-          let total = response.data.pagination.total;
-
-          if (total === 0 || total === undefined) {
-            total = validators.length;
-          }
-
-          const maxValidators = this.blockchain.max_validators;
-
-          this.quantityOfValidators = `${total} / ${maxValidators}`;
-          this.minimumTokensToBeActive = votingPower;
-        } else if (this.blockchain.current_amount_of_validators) {
-          this.quantityOfValidators = `${this.blockchain.current_amount_of_validators} / ${this.blockchain.max_validators}`;
+        if (this.blockchain) {
+          this.fetchValidatorData();
         }
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
+  },
+  methods: {
+    fetchValidatorData() {
+      if (this.blockchain.api_validators) {
+        axios.get(this.blockchain.api_validators)
+          .then(response => {
+            if (response && response.data.validators) {
+              const validators = response.data.validators;
+              const votingPower = validators[validators.length - 1]?.voting_power;
+              let total = response.data.pagination.total;
+
+              if (total === 0 || total === undefined) {
+                total = validators.length;
+              }
+
+              this.quantityOfValidators = `${total} / ${this.blockchain.max_validators}`;
+              this.minimumTokensToBeActive = votingPower;
+              this.emptyPlaces = this.blockchain.max_validators - total;
+              this.calculateEnterCost();
+            } else {
+              this.setManualData();
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching validators data:', error);
+            this.setManualData();
+          });
+      } else {
+        this.setManualData();
+      }
+    },
+    setManualData() {
+      const total = this.blockchain.max_validators;
+      const currentValidators = this.blockchain.current_amount_of_validators || 0;
+      this.quantityOfValidators = `${currentValidators} / ${total}`;
+      this.minimumTokensToBeActive = this.blockchain.minimum_token;
+      this.emptyPlaces = total - currentValidators;
+      this.manualData = true;
+      this.calculateEnterCost();
+    },
+    calculateEnterCost() {
+      if (this.minimumTokensToBeActive) {
+        const osmosisApiUrl = `https://api-osmosis.imperator.co/tokens/v2/price/${this.blockchain.cryptocurrency.toLowerCase()}`;
+        
+        axios.get(osmosisApiUrl)
+          .then(response => {
+            const tokenPrice = response.data.price;
+            if (tokenPrice) {
+              this.enterCost = tokenPrice * this.minimumTokensToBeActive;
+            } else {
+              this.fetchTokenPriceFromCoinGecko();
+            }
+          })
+          .catch(() => {
+            this.fetchTokenPriceFromCoinGecko();
+          });
+      }
+    },
+    fetchTokenPriceFromCoinGecko() {
+      const apiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=${this.blockchain.ids_coingecko}&vs_currencies=usd&x_cg_demo_api_key=${process.env.VUE_APP_COINGECKO_API_KEY}`;
+
+      axios.get(apiUrl)
+        .then(response => {
+          const tokenPrice = response.data[this.blockchain.ids_coingecko]?.usd;
+          if (tokenPrice) {
+            this.enterCost = tokenPrice * this.minimumTokensToBeActive;
+          } else {
+            this.enterCost = null;
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching price data from CoinGecko:', error);
+          this.enterCost = null;
+        });
+    }
   }
 };
 </script>
+
 
 <style scoped>
 .blockchain-details {

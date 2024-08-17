@@ -13,28 +13,50 @@
                         <th>CPU</th>
                         <th>RAM</th>
                         <th>SSD</th>
-                        <th>Quantity of validators</th>
-                        <th>Minimum tokens in active set</th>
-                        <th>Enter cost</th>
+                        <th>Validators</th>
+                        <th>Min tokens in active set</th>
+                        <th @click="sortTable('enterCost')">
+                            Min tokens cost
+                            <span>{{ sortedColumn === 'enterCost' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }}</span>
+                        </th>
+                        <th @click="sortTable('emptyPlaces')">
+                            Empty places
+                            <span>{{ sortedColumn === 'emptyPlaces' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }}</span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="blockchain in filteredBlockchains" :key="blockchain.name"
-                        @click="goToDetails(blockchain.name)">
+                    <tr v-for="blockchain in sortedBlockchains" :key="blockchain.name"
+                        :class="{ 'manual-data': blockchain.manualData }" @mouseover="showTooltip($event, blockchain)"
+                        @mouseleave="hideTooltip" @click="goToDetails(blockchain.name)">
                         <td>{{ blockchain.name }}</td>
                         <td>{{ blockchain.cryptocurrency }}</td>
                         <td>{{ blockchain.requirements.cpu }}</td>
                         <td>{{ blockchain.requirements.ram }}</td>
                         <td>{{ blockchain.requirements.ssd }}</td>
-                        <td>{{ blockchain.quantityOfValidators }}</td>
-                        <td>{{ blockchain.minimumTokensToBeActive }}</td>
-                        <td>{{ blockchain.enterCost ? `$${blockchain.enterCost.toFixed(2)}` : 'Loading...' }}</td>
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
+                            blockchain.quantityOfValidators ? blockchain.quantityOfValidators : 'Loading...' }}</td>
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
+                            blockchain.minimumTokensToBeActive ? blockchain.minimumTokensToBeActive : 'Loading...' }}
+                        </td>
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
+                            blockchain.enterCost ? `$${blockchain.enterCost.toFixed(2)}` : 'Loading...' }}</td>
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
+                            blockchain.emptyPlaces !== null ? blockchain.emptyPlaces : 'Loading...' }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <div class="tooltip-container" v-if="tooltipVisible">
+            <div class="tooltip bs-tooltip-bottom show" role="tooltip">
+                <div class="tooltip-inner">
+                    {{ tooltipMessage }}
+                </div>
+            </div>
+        </div>
     </div>
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -44,7 +66,11 @@ export default {
     data() {
         return {
             blockchains: [],
-            searchQuery: ''
+            searchQuery: '',
+            tooltipVisible: false,
+            tooltipMessage: '',
+            sortedColumn: '',
+            sortOrder: 'asc' // default sort order
         };
     },
     computed: {
@@ -52,6 +78,20 @@ export default {
             return this.blockchains.filter(blockchain =>
                 blockchain.name.toLowerCase().includes(this.searchQuery.toLowerCase())
             );
+        },
+        sortedBlockchains() {
+            const sorted = [...this.filteredBlockchains];
+            if (this.sortedColumn) {
+                sorted.sort((a, b) => {
+                    let modifier = this.sortOrder === 'asc' ? 1 : -1;
+                    if (a[this.sortedColumn] === null) return 1;
+                    if (b[this.sortedColumn] === null) return -1;
+                    if (a[this.sortedColumn] < b[this.sortedColumn]) return -1 * modifier;
+                    if (a[this.sortedColumn] > b[this.sortedColumn]) return 1 * modifier;
+                    return 0;
+                });
+            }
+            return sorted;
         }
     },
     created() {
@@ -59,6 +99,9 @@ export default {
             .then(response => {
                 this.blockchains = response.data.blockchains;
                 this.blockchains.forEach(blockchain => {
+                    blockchain.quantityOfValidators = null;
+                    blockchain.minimumTokensToBeActive = null;
+                    blockchain.emptyPlaces = null;
                     this.fetchValidatorData(blockchain)
                         .then(() => {
                             if (blockchain.minimumTokensToBeActive) {
@@ -75,8 +118,16 @@ export default {
             });
     },
     methods: {
+        sortTable(column) {
+            if (this.sortedColumn === column) {
+                this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                this.sortedColumn = column;
+                this.sortOrder = 'asc';
+            }
+        },
         fetchValidatorData(blockchain) {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 if (blockchain.api_validators) {
                     axios.get(blockchain.api_validators, {
                         headers: {
@@ -87,7 +138,7 @@ export default {
                         .then(response => {
                             if (response && response.data.validators) {
                                 const validators = response.data.validators;
-                                const votingPower = Number(validators[validators.length - 1]?.voting_power) + 2;
+                                const votingPower = Number(validators[validators.length - 1]?.voting_power);
                                 let total = response.data.pagination.total;
 
                                 if (total === 0 || total === undefined) {
@@ -96,27 +147,65 @@ export default {
 
                                 blockchain.quantityOfValidators = `${total} / ${blockchain.max_validators}`;
                                 blockchain.minimumTokensToBeActive = votingPower;
-                                resolve();
-                            } else if (blockchain.current_amount_of_validators) {
-                                blockchain.quantityOfValidators = `${blockchain.current_amount_of_validators} / ${blockchain.max_validators}`;
+                                blockchain.emptyPlaces = blockchain.max_validators - total;
+                                blockchain.manualData = false;
                                 resolve();
                             } else {
+                                this.setManualData(blockchain);
                                 resolve();
                             }
                         })
                         .catch(error => {
                             console.error(`Error fetching validators data for ${blockchain.name}:`, error);
-                            reject(error);
+                            this.setManualData(blockchain);
+                            resolve();
                         });
                 } else {
-                    blockchain.quantityOfValidators = blockchain.current_amount_of_validators ? `${blockchain.current_amount_of_validators} / ${blockchain.max_validators}` : '';
-                    blockchain.minimumTokensToBeActive = '';
+                    this.setManualData(blockchain);
                     resolve();
                 }
             });
         },
+        setManualData(blockchain) {
+            const total = blockchain.max_validators;
+            const currentValidators = blockchain.current_amount_of_validators || 0;
+            blockchain.quantityOfValidators = `${currentValidators} / ${total}`;
+            blockchain.minimumTokensToBeActive = blockchain.minimum_token || 'N/A';
+            blockchain.emptyPlaces = total - currentValidators;
+            blockchain.manualData = true;
+        },
         fetchTokenPrice(blockchain) {
-            const apiUrl = `https://api-osmosis.imperator.co/tokens/v2/price/${blockchain.cryptocurrency.toLowerCase()}`;
+            const osmosisApiUrl = `https://api-osmosis.imperator.co/tokens/v2/price/${blockchain.cryptocurrency.toLowerCase()}`;
+
+            axios.get(osmosisApiUrl, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.data.message) {
+                        this.fetchTokenPriceFromCoinGecko(blockchain);
+                    } else {
+                        const tokenPrice = response.data.price;
+                        if (tokenPrice) {
+                            blockchain.enterCost = tokenPrice * blockchain.minimumTokensToBeActive;
+                        } else {
+                            blockchain.enterCost = null;
+                        }
+                    }
+                })
+                .catch(error => {
+                    if (error.response && error.response.status >= 400 && error.response.status < 500) {
+                        console.error(`Osmosis API returned error ${error.response.status} for ${blockchain.name}. Falling back to CoinGecko API.`);
+                        this.fetchTokenPriceFromCoinGecko(blockchain);
+                    } else {
+                        console.error(`Error fetching price data for ${blockchain.name} from Osmosis API:`, error);
+                    }
+                });
+        },
+        fetchTokenPriceFromCoinGecko(blockchain) {
+            const apiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=${blockchain.ids_coingecko}&vs_currencies=usd&x_cg_demo_api_key=${process.env.VUE_APP_COINGECKO_API_KEY}`;
             axios.get(apiUrl, {
                 headers: {
                     'Accept': 'application/json',
@@ -124,7 +213,7 @@ export default {
                 }
             })
                 .then(response => {
-                    const tokenPrice = response.data.price;
+                    const tokenPrice = response.data[blockchain.ids_coingecko]?.usd;
                     if (tokenPrice) {
                         blockchain.enterCost = tokenPrice * blockchain.minimumTokensToBeActive;
                     } else {
@@ -132,16 +221,24 @@ export default {
                     }
                 })
                 .catch(error => {
-                    console.error(`Error fetching price data for ${blockchain.name}:`, error);
+                    console.error(`Error fetching price data for ${blockchain.name} from CoinGecko API:`, error);
                 });
         },
         goToDetails(name) {
             this.$router.push({ name: 'BlockchainDetails', params: { name } });
+        },
+        showTooltip(event, blockchain) {
+            if (blockchain.manualData) {
+                this.tooltipMessage = "Data is entered manually and may not be up-to-date, check the information in explorer.";
+                this.tooltipVisible = true;
+            }
+        },
+        hideTooltip() {
+            this.tooltipVisible = false;
         }
     }
 };
 </script>
-
 
 <style scoped>
 .blockchains-table {
@@ -149,6 +246,7 @@ export default {
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
+    position: relative;
 }
 
 .search-container {
@@ -186,6 +284,7 @@ export default {
     background-color: rgba(102, 81, 153, 0.1);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 table {
@@ -206,6 +305,11 @@ th {
     background-color: rgba(117, 123, 158, 0.267);
 }
 
+tr.manual-data:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+    cursor: pointer;
+}
+
 tr:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -213,6 +317,34 @@ tr:nth-child(even) {
 tr:hover {
     background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
+}
+
+.tooltip-container {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    font-size: 1em;
+}
+
+.tooltip.bs-tooltip-bottom .tooltip-inner {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    /* Make the tooltip span the entire width */
+    display: inline-block;
+    text-align: center;
+    /* Center the text */
+}
+
+.tooltip.bs-tooltip-bottom.show {
+    position: relative;
+    display: inline-block;
+    bottom: -20px;
+    /* Adjust to ensure it appears right under the table */
 }
 
 /* Custom scrollbar styles */
@@ -272,6 +404,10 @@ tr:hover {
     h2 {
         font-size: 1.25em;
     }
+
+    .tooltip-container {
+        font-size: 0.75em;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -285,11 +421,15 @@ tr:hover {
 
     th,
     td {
-        font-size: 1em;
+        font-size: 0.8em;
     }
 
     h2 {
         font-size: 1.25em;
+    }
+
+    .tooltip-container {
+        font-size: 0.8em;
     }
 }
 
