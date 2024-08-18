@@ -36,9 +36,13 @@
     <div v-if="quantityOfValidators && minimumTokensToBeActive" class="details-section">
       <h3>Validators information</h3>
       <p><strong>Quantity of validators:</strong> {{ quantityOfValidators }}</p>
-      <p><strong>Minimum tokens in active set:</strong> {{ minimumTokensToBeActive }}</p>
+      <p><strong>Minimum tokens in active set:</strong> {{ minimumTokensToBeActive }} {{ blockchain.cryptocurrency }}</p>
       <p v-if="enterCost !== null"><strong>Cost of minimum tokens</strong> ${{ enterCost.toFixed(2) }}</p>
       <p v-else><strong>Cost of minimum tokens:</strong> Loading...</p>
+      <p v-if="votingPowerFifth !== null"><strong>Amount of tokens in 5th place from the end:</strong> {{ votingPowerFifth }} {{ blockchain.cryptocurrency }}</p>
+      <p v-else><strong>Amount of tokens in 5th place from the end:</strong> Loading...</p>
+      <p v-if="fifthTokenCost !== null"><strong>Cost of amount token in 5th place from the end:</strong> ${{ fifthTokenCost.toFixed(2) }}</p>
+      <p v-else><strong>Cost of amount token in 5th place from the end:</strong> Loading...</p>
       <p v-if="emptyPlaces !== null"><strong>Empty places:</strong> {{ emptyPlaces }}</p>
       <p v-else><strong>Empty places:</strong> Loading...</p>
       <p v-if="manualData" style="color: red;"><strong>Data is entered manually and may not be up-to-date, check the information in explorer.</strong></p>
@@ -91,6 +95,8 @@ export default {
       minimumTokensToBeActive: null,
       enterCost: null,
       emptyPlaces: null,
+      votingPowerFifth: null,
+      fifthTokenCost: null,
       manualData: false
     };
   },
@@ -115,6 +121,7 @@ export default {
             if (response && response.data.validators) {
               const validators = response.data.validators;
               const votingPower = validators[validators.length - 1]?.voting_power;
+              const votingPowerFifth = validators[validators.length - 5]?.voting_power;
               let total = response.data.pagination.total;
 
               if (total === 0 || total === undefined) {
@@ -123,6 +130,7 @@ export default {
 
               this.quantityOfValidators = `${total} / ${this.blockchain.max_validators}`;
               this.minimumTokensToBeActive = votingPower;
+              this.votingPowerFifth = votingPowerFifth;
               this.emptyPlaces = this.blockchain.max_validators - total;
               this.calculateEnterCost();
             } else {
@@ -142,6 +150,7 @@ export default {
       const currentValidators = this.blockchain.current_amount_of_validators || 0;
       this.quantityOfValidators = `${currentValidators} / ${total}`;
       this.minimumTokensToBeActive = this.blockchain.minimum_token;
+      this.votingPowerFifth = this.blockchain.fifth_place_tokens || 'N/A';
       this.emptyPlaces = total - currentValidators;
       this.manualData = true;
       this.calculateEnterCost();
@@ -155,6 +164,7 @@ export default {
             const tokenPrice = response.data.price;
             if (tokenPrice) {
               this.enterCost = tokenPrice * this.minimumTokensToBeActive;
+              this.fifthTokenCost = tokenPrice * this.votingPowerFifth;
             } else {
               this.fetchTokenPriceFromCoinGecko();
             }
@@ -172,19 +182,21 @@ export default {
           const tokenPrice = response.data[this.blockchain.ids_coingecko]?.usd;
           if (tokenPrice) {
             this.enterCost = tokenPrice * this.minimumTokensToBeActive;
+            this.fifthTokenCost = tokenPrice * this.votingPowerFifth;
           } else {
             this.enterCost = null;
+            this.fifthTokenCost = null;
           }
         })
         .catch(error => {
           console.error('Error fetching price data from CoinGecko:', error);
           this.enterCost = null;
+          this.fifthTokenCost = null;
         });
     }
   }
 };
 </script>
-
 
 <style scoped>
 .blockchain-details {

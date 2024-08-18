@@ -19,9 +19,9 @@
       "max_validators": 180,
       "minimum_token": 75283,
       "requirements": {
-        "cpu": "8 cores",
+        "cpu": "8",
         "ram": "32GB",
-        "ssd": "2 TB"
+        "ssd": "2TB"
       },
       "ecosystem": [
         {
@@ -160,7 +160,7 @@
       "max_validators": 150,
       "minimum_token": 205343,
       "requirements": {
-        "cpu": "8 cores",
+        "cpu": "8",
         "ram": "32GB",
         "ssd": "1TB"
       },
@@ -278,9 +278,9 @@
       "max_validators": 125,
       "minimum_token": 44614,
       "requirements": {
-        "cpu": "8 cores",
+        "cpu": "8",
         "ram": "64GB",
-        "ssd": "1TB NVME"
+        "ssd": "1TB"
       },
       "ecosystem": [
         {
@@ -397,7 +397,7 @@
       "max_validators": 100,
       "minimum_token": 719711,
       "requirements": {
-        "cpu": "8 cores",
+        "cpu": "8",
         "ram": "16GB",
         "ssd": "2Tb"
       },
@@ -502,7 +502,7 @@
       "max_validators": 80,
       "minimum_token": 15,
       "requirements": {
-        "cpu": "Strict req (see docs)",
+        "cpu": "",
         "ram": "32GB",
         "ssd": "512GB"
       },
@@ -613,7 +613,7 @@
       "max_validators": 100,
       "minimum_token": 4,
       "requirements": {
-        "cpu": "4 cores",
+        "cpu": "4",
         "ram": "8GB",
         "ssd": "200GB"
       },
@@ -729,7 +729,7 @@
       "max_validators": 150,
       "minimum_token": 15,
       "requirements": {
-        "cpu": "4 cores",
+        "cpu": "4",
         "ram": "32GB",
         "ssd": "500GB"
       },
@@ -834,7 +834,7 @@
       "max_validators": 100,
       "minimum_token": 94585,
       "requirements": {
-        "cpu": "4 cores",
+        "cpu": "4",
         "ram": "8GB",
         "ssd": "512GB"
       },
@@ -946,7 +946,7 @@
       "max_validators": 150,
       "minimum_token": 332,
       "requirements": {
-        "cpu": "4 cores",
+        "cpu": "4",
         "ram": "16GB",
         "ssd": "1TB"
       },
@@ -1152,7 +1152,7 @@
       "max_validators": 75,
       "minimum_token": 53233,
       "requirements": {
-        "cpu": "16 cores",
+        "cpu": "16",
         "ram": "16GB",
         "ssd": "1.5TB"
       },
@@ -1361,8 +1361,9 @@
       "current_amount_of_validators": 67,
       "max_validators": 80,
       "minimum_token": 1,
+      "fifth_place_tokens": 110,
       "requirements": {
-        "cpu": "8 cores",
+        "cpu": "8",
         "ram": "32GB",
         "ssd": "2TB"
       },
@@ -1466,7 +1467,7 @@
       "max_validators": 70,
       "minimum_token": 5025,
       "requirements": {
-        "cpu": "2 cores",
+        "cpu": "2",
         "ram": "8GB",
         "ssd": "500GB"
       },
@@ -1562,7 +1563,7 @@
       "max_validators": 50,
       "minimum_token": 144127,
       "requirements": {
-        "cpu": "4 cores",
+        "cpu": "4",
         "ram": "16GB",
         "ssd": "240GB"
       },
@@ -1661,7 +1662,7 @@
       "max_validators": 70,
       "minimum_token": 569,
       "requirements": {
-        "cpu": "4 cores",
+        "cpu": "4",
         "ram": "8GB",
         "ssd": "500GB"
       },
@@ -1768,6 +1769,7 @@
       "current_amount_of_validators": 20,
       "max_validators": 100,
       "minimum_token": 1,
+      "fifth_place_tokens": 1,
       "requirements": {
         "cpu": "",
         "ram": "",
@@ -1895,7 +1897,7 @@
       "max_validators": 130,
       "minimum_token": 3,
       "requirements": {
-        "cpu": "8 cores",
+        "cpu": "8",
         "ram": "16GB",
         "ssd": "1TB"
       },
@@ -2090,9 +2092,9 @@
       "current_amount_of_validators": 91,
       "max_validators": 200,
       "minimum_token": 4006,
-
+      "fifth_place_tokens": 138354,
       "requirements": {
-        "cpu": "2 cores",
+        "cpu": "2",
         "ram": "8GB",
         "ssd": "125GB"
       },
@@ -2200,7 +2202,7 @@
       "max_validators": 90,
       "minimum_token": 112,
       "requirements": {
-        "cpu": "4 cores",
+        "cpu": "4",
         "ram": "32GB",
         "ssd": "500GB"
       },
@@ -2312,7 +2314,7 @@
       "max_validators": 75,
       "minimum_token": 746902,
       "requirements": {
-        "cpu": "8 cores",
+        "cpu": "8",
         "ram": "32GB",
         "ssd": "1TB"
       },
@@ -2431,7 +2433,7 @@
       "max_validators": 150,
       "minimum_token": 70,
       "requirements": {
-        "cpu": "4 cores",
+        "cpu": "4",
         "ram": "32GB",
         "ssd": "1TB"
       },
@@ -2533,7 +2535,7 @@
       "max_validators": 100,
       "minimum_token": 5433,
       "requirements": {
-        "cpu": "4 cores",
+        "cpu": "4",
         "ram": "16GB",
         "ssd": "500GB"
       },
@@ -2653,7 +2655,7 @@
       "max_validators": 75,
       "minimum_token": 563,
       "requirements": {
-        "cpu": "8 cores",
+        "cpu": "8",
         "ram": "64GB",
         "ssd": "4TB"
       },
@@ -2898,7 +2900,7 @@
       "max_validators": 100,
       "minimum_token": 3,
       "requirements": {
-        "cpu": "2 cores",
+        "cpu": "2",
         "ram": "16GB",
         "ssd": "250GB"
       },

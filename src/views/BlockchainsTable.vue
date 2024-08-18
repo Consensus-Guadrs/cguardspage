@@ -9,19 +9,20 @@
                 <thead>
                     <tr>
                         <th>Network</th>
-                        <th>TOKEN</th>
                         <th>CPU</th>
                         <th>RAM</th>
                         <th>SSD</th>
                         <th>Validators</th>
-                        <th>Min tokens in active set</th>
+                        <th>Min in active set</th>
                         <th @click="sortTable('enterCost')">
-                            Min tokens cost
-                            <span>{{ sortedColumn === 'enterCost' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }}</span>
+                            <span>{{ sortedColumn === 'enterCost' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }} Cost</span>
+                        </th>
+                        <th>5th place from the end</th>
+                        <th @click="sortTable('fifthTokenCost')">
+                            <span>{{ sortedColumn === 'fifthTokenCost' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }} Cost</span>
                         </th>
                         <th @click="sortTable('emptyPlaces')">
-                            Empty places
-                            <span>{{ sortedColumn === 'emptyPlaces' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }}</span>
+                            <span>{{ sortedColumn === 'emptyPlaces' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }} Empty places</span>
                         </th>
                     </tr>
                 </thead>
@@ -30,17 +31,21 @@
                         :class="{ 'manual-data': blockchain.manualData }" @mouseover="showTooltip($event, blockchain)"
                         @mouseleave="hideTooltip" @click="goToDetails(blockchain.name)">
                         <td>{{ blockchain.name }}</td>
-                        <td>{{ blockchain.cryptocurrency }}</td>
                         <td>{{ blockchain.requirements.cpu }}</td>
                         <td>{{ blockchain.requirements.ram }}</td>
                         <td>{{ blockchain.requirements.ssd }}</td>
                         <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
                             blockchain.quantityOfValidators ? blockchain.quantityOfValidators : 'Loading...' }}</td>
                         <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
-                            blockchain.minimumTokensToBeActive ? blockchain.minimumTokensToBeActive : 'Loading...' }}
+                            blockchain.minimumTokensToBeActive ? blockchain.minimumTokensToBeActive : 'Loading...' }} {{ blockchain.cryptocurrency }}
                         </td>
                         <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
                             blockchain.enterCost ? `$${blockchain.enterCost.toFixed(2)}` : 'Loading...' }}</td>
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
+                            blockchain.votingPowerFifth ? blockchain.votingPowerFifth : 'Loading...' }} {{ blockchain.cryptocurrency }}
+                        </td>
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
+                            blockchain.fifthTokenCost ? `$${blockchain.fifthTokenCost.toFixed(2)}` : 'Loading...' }}</td>
                         <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
                             blockchain.emptyPlaces !== null ? blockchain.emptyPlaces : 'Loading...' }}</td>
                     </tr>
@@ -138,7 +143,8 @@ export default {
                         .then(response => {
                             if (response && response.data.validators) {
                                 const validators = response.data.validators;
-                                const votingPower = Number(validators[validators.length - 1]?.voting_power);
+                                const votingPower = validators[validators.length - 1]?.voting_power;
+                                const votingPowerFifth = validators[validators.length - 5]?.voting_power;
                                 let total = response.data.pagination.total;
 
                                 if (total === 0 || total === undefined) {
@@ -147,6 +153,7 @@ export default {
 
                                 blockchain.quantityOfValidators = `${total} / ${blockchain.max_validators}`;
                                 blockchain.minimumTokensToBeActive = votingPower;
+                                blockchain.votingPowerFifth = votingPowerFifth;
                                 blockchain.emptyPlaces = blockchain.max_validators - total;
                                 blockchain.manualData = false;
                                 resolve();
@@ -171,6 +178,7 @@ export default {
             const currentValidators = blockchain.current_amount_of_validators || 0;
             blockchain.quantityOfValidators = `${currentValidators} / ${total}`;
             blockchain.minimumTokensToBeActive = blockchain.minimum_token || 'N/A';
+            blockchain.votingPowerFifth = blockchain.fifth_place_tokens || 'N/A';
             blockchain.emptyPlaces = total - currentValidators;
             blockchain.manualData = true;
         },
@@ -184,14 +192,16 @@ export default {
                 }
             })
                 .then(response => {
-                    if (response.data.message) {
+                    if (response.data?.message) {
                         this.fetchTokenPriceFromCoinGecko(blockchain);
                     } else {
                         const tokenPrice = response.data.price;
                         if (tokenPrice) {
                             blockchain.enterCost = tokenPrice * blockchain.minimumTokensToBeActive;
+                            blockchain.fifthTokenCost = tokenPrice * blockchain.votingPowerFifth;
                         } else {
                             blockchain.enterCost = null;
+                            blockchain.fifthTokenCost = null;
                         }
                     }
                 })
@@ -216,8 +226,10 @@ export default {
                     const tokenPrice = response.data[blockchain.ids_coingecko]?.usd;
                     if (tokenPrice) {
                         blockchain.enterCost = tokenPrice * blockchain.minimumTokensToBeActive;
+                        blockchain.fifthTokenCost = tokenPrice * blockchain.votingPowerFifth;
                     } else {
                         blockchain.enterCost = null;
+                        blockchain.fifthTokenCost = null;
                     }
                 })
                 .catch(error => {
@@ -298,7 +310,7 @@ td {
     border: 1px solid rgba(255, 255, 255, 0.2);
     text-align: left;
     color: #ffffff;
-    word-break: break-all;
+    word-break: keep-all;
 }
 
 th {
@@ -393,16 +405,16 @@ tr:hover {
     }
 
     .search-input {
-        font-size: 0.8em;
+        font-size: 0.75em;
     }
 
     th,
     td {
-        font-size: 0.8em;
+        font-size: 0.75em;
     }
 
     h2 {
-        font-size: 1.25em;
+        font-size: 1em;
     }
 
     .tooltip-container {
@@ -421,7 +433,7 @@ tr:hover {
 
     th,
     td {
-        font-size: 0.8em;
+        font-size: 0.75em;
     }
 
     h2 {
@@ -429,7 +441,7 @@ tr:hover {
     }
 
     .tooltip-container {
-        font-size: 0.8em;
+        font-size: 0.75em;
     }
 }
 
