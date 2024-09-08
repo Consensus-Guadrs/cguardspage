@@ -724,10 +724,10 @@
       "twitter": "https://x.com/EvmosOrg",
       "discord": "https://discord.com/invite/evmos",
       "telegram": "",
-      "api_validators": "https://evmos-rest.publicnode.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=100",
-      "current_amount_of_validators": 118,
-      "max_validators": 150,
-      "minimum_token": 15,
+      "api_validators": "https://evmos-rest.publicnode.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 20,
+      "max_validators": 20,
+      "minimum_token": 4590947,
       "requirements": {
         "cpu": "4",
         "ram": "32GB",
@@ -1357,11 +1357,11 @@
       "twitter": "https://twitter.com/XPLA_Official",
       "discord": "https://discord.com/invite/hwnmw5qBzu",
       "telegram": "https://t.me/Official_XPLA",
-      "api_validators": "",
-      "current_amount_of_validators": 67,
+      "api_validators": "https://xpla-api.lavenderfive.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 70,
       "max_validators": 80,
-      "minimum_token": 1,
-      "fifth_place_tokens": 110,
+      "minimum_token": 13,
+      "fifth_place_tokens": 52,
       "requirements": {
         "cpu": "8",
         "ram": "32GB",
@@ -1979,7 +1979,7 @@
     },
     {
       "name": "Umee (UX Chain)",
-      "description": "Umee, now known as UX Chain, is a Cosmos-based blockchain platform designed to create a universal cross-chain DeFi hub. It enables users to collateralize staked assets across multiple blockchains, allowing them to earn rewards while borrowing against their assets for activities in other ecosystems like Ethereum. UX Chain leverages Inter-Blockchain Communication (IBC) and Gravity Bridge to facilitate seamless asset transfers and interoperability between Cosmos and Ethereum, positioning itself as a key player in the decentralized lending and borrowing market​.",
+      "description": "Umee, now known as UX Chain, is a Cosmos-based blockchain platform designed to create a universal cross-chain DeFi hub. It enables users to collateralize staked assets across multiple blockchains, allowing them to earn rewards while borrowing against their assets for activities in other ecosystems like Ethereum. UX Chain leverages Inter-Blockchain Communication (IBC) to facilitate seamless asset transfers and interoperability between Cosmos and Ethereum, positioning itself as a key player in the decentralized lending and borrowing market​.",
       "cryptocurrency": "UMEE",
       "ids_coingecko": "umee",
       "logo": "umee.png",
@@ -1991,8 +1991,8 @@
       "twitter": "https://x.com/ux_xyz",
       "discord": "https://discord.com/invite/uxchain",
       "telegram": "https://t.me/uxuxchain",
-      "api_validators": "https://umee.api.kjnodes.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
-      "current_amount_of_validators": 92,
+      "api_validators": "https://umee-lcd.quantnode.tech/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 90,
       "max_validators": 100,
       "minimum_token": 203801,
       "requirements": {
@@ -2988,6 +2988,454 @@
           "link": "https://polkachu.com/installation/kyve"
         }
       ]
+    },
+    {
+      "name": "Penumbra (Testnet)",
+      "description": "Penumbra is a fully private, proof-of-stake blockchain network and decentralized exchange (DEX) within the Cosmos ecosystem. It enables shielded transactions, staking, swaps, and marketmaking of any IBC-compatible cryptoasset without revealing user data. Penumbra integrates privacy with proof-of-stake using zero-knowledge proofs and unique staking derivatives, supporting sealed-bid batch auctions and anonymized liquidity management. The network aims to provide privacy and interoperability across Cosmos zones and other blockchains via IBC.",
+      "cryptocurrency": "PEN",
+      "ids_coingecko": "penumbra",
+      "logo": "penumbra.png",
+      "website": "https://penumbra.zone/",
+      "github": "https://github.com/penumbra-zone/penumbra",
+      "mintscan": "",
+      "pingpub": "",
+      "documentation": "https://guide.penumbra.zone/",
+      "twitter": "https://twitter.com/penumbrazone",
+      "discord": "https://discord.com/invite/hKvkrqa3zC",
+      "telegram": "",
+      "api_validators": "",
+      "current_amount_of_validators": null,
+      "max_validators": null,
+      "minimum_token": null,
+      "requirements": {
+        "cpu": "2",
+        "ram": "8GB",
+        "ssd": "200GB"
+      },
+      "ecosystem": [
+        {
+          "name": "Penumbra DEX",
+          "type": "Decentralized Exchange and Shielded Pool",
+          "link": "https://penumbra.zone/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Implementing shielded staking and private delegation mechanics within Penumbra."
+        },
+        {
+          "contribution": "Developing ZSwap for private swaps with sealed-bid batch auctions to prevent frontrunning."
+        },
+        {
+          "contribution": "Integrating Penumbra with the Cosmos ecosystem using IBC for cross-chain transactions."
+        },
+        {
+          "contribution": "Designing a decentralized governance system with private voting for protocol upgrades and decisions."
+        },
+        {
+          "contribution": "Operating validator nodes, ensuring privacy, security, and compliance within the shielded PoS environment."
+        },
+        {
+          "contribution": "Creating monitoring tools and scripts to manage shielded staking and swap operations."
+        },
+        {
+          "contribution": "Providing technical resources and documentation for developers to build within the Penumbra ecosystem."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Organizing workshops, events, and hackathons to engage the community and promote privacy-focused blockchain solutions."
+        },
+        {
+          "contribution": "Providing grants and support to projects enhancing the Penumbra network."
+        },
+        {
+          "contribution": "Moderating forums and community channels to foster discussion on privacy and governance in blockchain."
+        },
+        {
+          "contribution": "Creating educational content on the benefits of private staking, swaps, and marketmaking."
+        },
+        {
+          "contribution": "Developing guides and tutorials to help new users understand Penumbra's shielded pool mechanics."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Run a Penumbra node (official)",
+          "link": "https://guide.penumbra.zone/node/pd/join-network/"
+        },
+        {
+          "tutorial": "Running a validator node on Penumbra",
+          "link": "https://guide.penumbra.zone/node/pd/validator/"
+        },
+        {
+          "tutorial": "BreizhNode giude",
+          "link": "https://medium.com/@breizh-node/launch-your-validator-node-on-penumbra-easily-fr-en-2b9ee4b64ccb"
+        }
+      ]
+    },
+    {
+      "name": "Sommelier",
+      "description": "Sommelier is a decentralized, proof-of-stake blockchain built on the Cosmos SDK, designed to automate DeFi strategies like liquidity management, yield optimization, and portfolio rebalancing by machine learning strategies. The protocol uses a unique combination of on-chain governance and off-chain computation to execute complex strategies efficiently. It connects to multiple blockchains, including Ethereum, through bridges, allowing seamless strategy execution without moving assets.",
+      "cryptocurrency": "SOMM",
+      "ids_coingecko": "sommelier",
+      "logo": "sommelier.avif",
+      "website": "https://www.sommelier.finance/",
+      "github": "https://github.com/PeggyJV/sommelier",
+      "mintscan": "https://www.mintscan.io/sommelier",
+      "pingpub": "",
+      "documentation": "https://sommelier-finance.gitbook.io/",
+      "twitter": "https://twitter.com/sommfinance",
+      "discord": "https://discord.com/invite/sommelierfinance",
+      "telegram": "https://t.me/getsomm",
+      "api_validators": "https://sommelier-api.lavenderfive.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 41,
+      "max_validators": 50,
+      "minimum_token": 10152,
+      "requirements": {
+        "cpu": "",
+        "ram": "",
+        "ssd": ""
+      },
+      "ecosystem": [
+        {
+          "name": "Sommelier Vaults",
+          "type": "DeFi Strategy Automation",
+          "link": "https://app.sommelier.finance/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Developing smart contracts for automated DeFi strategies, including rebalancing and liquidity management."
+        },
+        {
+          "contribution": "Creating a bridge between Cosmos and EVM networks for seamless strategy execution without asset transfer."
+        },
+        {
+          "contribution": "Implementing decentralized governance to approve new vaults and manage protocol upgrades."
+        },
+        {
+          "contribution": "Operating validator nodes to secure the network and facilitate strategy consensus."
+        },
+        {
+          "contribution": "Enhancing protocol security with regular audits and a bug bounty program."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Engaging the community through governance proposals to onboard new vaults and strategies."
+        },
+        {
+          "contribution": "Providing grants and support for strategists and developers to build within the Sommelier ecosystem."
+        },
+        {
+          "contribution": "Organizing educational content and events to promote understanding of the networks DeFi automation capabilities."
+        },
+        {
+          "contribution": "Moderating forums and channels to maintain a collaborative and informed community environment."
+        },
+        {
+          "contribution": "Facilitating multilingual documentation to make the protocol accessible to a global audience."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Run a Sommelier validator node",
+          "link": "https://sommelier-finance.gitbook.io/sommelier/validators"
+        },
+        {
+          "tutorial": "Polkachu tutorial node installation guides",
+          "link": "https://polkachu.com/installation/sommelier"
+        }
+      ]
+    },
+    {
+      "name": "ZetaChain",
+      "description": "ZetaChain is a Layer 1 blockchain that offers omnichain interoperability, connecting various blockchains including non-smart contract networks like Bitcoin and Dogecoin. Built on the Cosmos SDK and Tendermint, it utilizes a proof-of-stake (PoS) consensus mechanism. ZetaChain's omnichain smart contracts enable seamless cross-chain data and asset transfers, eliminating the need for wrapping or bridging tokens.",
+      "cryptocurrency": "ZETA",
+      "ids_coingecko": "zetachain",
+      "logo": "zetachain.png",
+      "website": "https://www.zetachain.com/",
+      "github": "https://github.com/zeta-chain",
+      "mintscan": "https://www.mintscan.io/zeta/",
+      "pingpub": "https://ping.pub/zetachain",
+      "documentation": "https://docs.zetachain.com/",
+      "twitter": "https://twitter.com/zetablockchain",
+      "discord": "https://discord.gg/zetachain",
+      "telegram": "https://github.com/zeta-chain",
+      "api_validators": "https://zetachain-api.lavenderfive.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 97,
+      "max_validators": 100,
+      "minimum_token": 8,
+      "requirements": {
+        "cpu": "4",
+        "ram": "12GB",
+        "ssd": "300GB"
+      },
+      "ecosystem": [
+        {
+          "name": "ZetaHub",
+          "type": "User Interaction Platform",
+          "link": "https://www.zetachain.com/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Development of omnichain smart contracts allowing seamless interaction between multiple blockchains, including Bitcoin."
+        },
+        {
+          "contribution": "Implementation of cross-chain messaging to facilitate data exchange and transactions between different blockchain networks."
+        },
+        {
+          "contribution": "Creation of ZRC-20 tokens, which represent assets on ZetaChain and simplify cross-chain operations."
+        },
+        {
+          "contribution": "Providing a unified platform that allows developers to build interoperable DApps without the complexities of cross-chain bridges."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Organizing hackathons and educational programs to engage the developer community and encourage the creation of omnichain applications."
+        },
+        {
+          "contribution": "Offering grants and financial support for projects building on ZetaChain's unique omnichain capabilities."
+        },
+        {
+          "contribution": "Enabling community-driven governance where ZETA holders can propose and vote on network changes."
+        },
+        {
+          "contribution": "Partnering with over 200 organizations, including oracles, DeFi services, and other infrastructure providers, to strengthen the ZetaChain ecosystem."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Run a full node (official)",
+          "link": "https://www.zetachain.com/docs/nodes/"
+        },
+        {
+          "tutorial": "Validating on mainnet (official)",
+          "link": "https://www.zetachain.com/docs/nodes/validate/validator/"
+        }
+      ]
+    },
+    {
+      "name": "Bostrom",
+      "description": "Bostrom is a superintelligence project that operates as a permissionless knowledge graph built on the Cosmos SDK and IPFS protocol. It allows users to add knowledge by creating cyberlinks between data particles, contributing to a decentralized knowledge network. Bostrom aims to serve as a bootloader for superintelligence, providing an environment for AI development and decentralized information sharing.",
+      "cryptocurrency": "BOOT",
+      "ids_coingecko": "bostrom",
+      "logo": "bostrom.png",
+      "website": "https://cyb.ai",
+      "github": "https://github.com/cybercongress/cyb",
+      "mintscan": "",
+      "pingpub": "https://ping.pub/bostrom",
+      "documentation": "https://cyb.ai/docs",
+      "twitter": "https://twitter.com/cyber_devs",
+      "discord": "",
+      "telegram": "",
+      "api_validators": "https://lcd.bostrom.cybernode.ai/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 82,
+      "max_validators": 100,
+      "minimum_token": 179685,
+      "requirements": {
+        "cpu": "6",
+        "ram": "32GB",
+        "ssd": "1TB"
+      },
+      "ecosystem": [
+        {
+          "name": "Cyber",
+          "type": "Decentralized Knowledge Graph",
+          "link": "https://cyb.ai"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Developing a permissionless knowledge graph that uses blockchain to verify the addition of data, enhancing decentralized data sharing and collective learning."
+        },
+        {
+          "contribution": "Creating cyberlinks, which are connections between data particles, adding to the network's knowledge graph with a provable and verifiable method."
+        },
+        {
+          "contribution": "Integration of IPFS for content addressing, ensuring data immutability and decentralized storage."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Engaging the community in governance processes through proposals and active voting mechanisms within the Bostrom network."
+        },
+        {
+          "contribution": "Offering tools for decentralized identity management through NFT passports, which can link multiple Cosmos and Ethereum addresses."
+        },
+        {
+          "contribution": "Providing business coaching and support to foster the growth of professionals in the decentralized ecosystem."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Run a node (official)",
+          "link": "https://github.com/cybercongress/go-cyber"
+        },
+        {
+          "tutorial": "Run a validator node (official)",
+          "link": "https://github.com/cybercongress/go-cyber/blob/main/docs/run_validator.md"
+        }
+      ]
+    },
+    {
+      "name": "Kava",
+      "description": "Kava is a Layer 1 blockchain that integrates the speed and scalability of the Cosmos SDK with the developer-friendly features of Ethereum's EVM. Kava’s unique co-chain architecture allows for a versatile and highly interoperable environment, supporting DeFi protocols and decentralized applications across multiple blockchain ecosystems. It provides users with a range of financial services, including lending, staking, and yield farming, through its rapidly growing DeFi ecosystem.",
+      "cryptocurrency": "KAVA",
+      "ids_coingecko": "kava",
+      "logo": "kava.png",
+      "website": "https://www.kava.io/",
+      "github": "https://github.com/kava-labs",
+      "mintscan": "https://www.mintscan.io/kava",
+      "pingpub": "",
+      "documentation": "https://docs.kava.io/",
+      "twitter": "https://twitter.com/KAVA_CHAIN",
+      "discord": "https://discord.gg/kava",
+      "telegram": "https://t.me/kavalabs",
+      "api_validators": "https://kava-api.polkachu.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 94,
+      "max_validators":  100,
+      "minimum_token": 585,
+      "requirements": {
+        "cpu": "",
+        "ram": "64GB",
+        "ssd": "200GB"
+      },
+      "ecosystem": [
+        {
+          "name": "Kava DeFi",
+          "type": "Decentralized Finance Platform",
+          "link": "https://app.kava.io/"
+        },
+        {
+          "name": "Kava Earn",
+          "type": "Yield Optimizer",
+          "link": "https://app.kava.io/"
+        },
+        {
+          "name": "Kava Boost",
+          "type": "Rewards Enhancer",
+          "link": "https://app.kava.io/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Developing a unique co-chain architecture that integrates Cosmos SDK and Ethereum EVM for interoperability and scalability."
+        },
+        {
+          "contribution": "Implementing Kava Rise, a developer incentives program that has driven significant protocol growth on the network."
+        },
+        {
+          "contribution": "Launching the Kava EVM, which connects Ethereum dApps directly to the Cosmos ecosystem, enhancing cross-chain DeFi opportunities."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Engaging the community through governance, allowing KAVA holders to vote on network upgrades and protocol decisions."
+        },
+        {
+          "contribution": "Providing developer grants and financial incentives through the Kava Rise program to support the growth of the Kava ecosystem."
+        },
+        {
+          "contribution": "Supporting cross-chain asset integration, enabling assets from various blockchains to be used in Kavas DeFi protocols."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Run a Kava node (official)",
+          "link": "https://docs.kava.io/docs/nodes-and-validators/node-setup-guide"
+        },
+        {
+          "tutorial": "Run a validator (official)",
+          "link": "https://docs.kava.io/docs/nodes-and-validators/validator-node"
+        },
+        {
+          "tutorial": "Polkachu tutorial node installation guide",
+          "link": "https://polkachu.com/installation/kava"
+        }
+      ]
+    },
+    {
+      "name": "Band Protocol",
+      "description": "Band Protocol is a decentralized data oracle platform that connects smart contracts with real-world data and external APIs. Built on the Cosmos SDK, Band Protocol aggregates and connects off-chain data to on-chain smart contracts in a secure and reliable manner. It aims to offer a scalable, cross-chain solution for data integration, ensuring that smart contracts have access to accurate and timely information from various data sources.",
+      "cryptocurrency": "BAND",
+      "ids_coingecko": "band-protocol",
+      "logo": "band-protocol.svg",
+      "website": "https://bandprotocol.com/",
+      "github": "https://github.com/bandprotocol",
+      "mintscan": "https://www.mintscan.io/band",
+      "pingpub": "https://ping.pub/band",
+      "documentation": "https://docs.bandchain.org/",
+      "twitter": "https://twitter.com/BandProtocol",
+      "discord": "https://discord.com/invite/mbRuVQURGt",
+      "telegram": "https://t.me/bandprotocol",
+      "api_validators": "https://laozi1.bandchain.org/api/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 95,
+      "max_validators": 100,
+      "minimum_token": 1,
+      "requirements": {
+        "cpu": "4",
+        "ram": "32GB",
+        "ssd": ""
+      },
+      "ecosystem": [
+        {
+          "name": "BandChain",
+          "type": "Decentralized Oracle",
+          "link": "https://bandprotocol.com/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Providing a decentralized oracle network that aggregates and verifies data from various sources, ensuring reliability and accuracy for smart contracts."
+        },
+        {
+          "contribution": "Implementing cross-chain data capabilities, allowing data to be accessed and utilized across different blockchain networks."
+        },
+        {
+          "contribution": "Developing the BandChain, which is optimized for high throughput and low latency in data querying and aggregation."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Facilitating community governance through BAND token holders who can vote on network upgrades and protocol decisions."
+        },
+        {
+          "contribution": "Offering grants and funding for projects that integrate Band Protocols oracles into their ecosystems."
+        },
+        {
+          "contribution": "Engaging in educational outreach and community building through events, AMAs, and active participation in the broader blockchain space."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Run a BandChain Node",
+          "link": "https://docs.bandchain.org/node-validators/overview"
+        },
+        {
+          "tutorial": "Polkachu tutorial node installation guide",
+          "link": "https://polkachu.com/installation/band"
+        }
+      ]
     }
+    
   ]
 }

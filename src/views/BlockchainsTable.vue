@@ -15,14 +15,17 @@
                         <th>Validators</th>
                         <th>Min in active set</th>
                         <th @click="sortTable('enterCost')">
-                            <span>{{ sortedColumn === 'enterCost' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }} Cost</span>
+                            <span>{{ sortedColumn === 'enterCost' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }}
+                                Cost</span>
                         </th>
                         <th>5th place from the end</th>
                         <th @click="sortTable('fifthTokenCost')">
-                            <span>{{ sortedColumn === 'fifthTokenCost' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }} Cost</span>
+                            <span>{{ sortedColumn === 'fifthTokenCost' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }}
+                                Cost</span>
                         </th>
                         <th @click="sortTable('emptyPlaces')">
-                            <span>{{ sortedColumn === 'emptyPlaces' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }} Empty places</span>
+                            <span>{{ sortedColumn === 'emptyPlaces' ? (sortOrder === 'asc' ? '▲' : '▼') : '▼' }} Empty
+                                places</span>
                         </th>
                     </tr>
                 </thead>
@@ -34,20 +37,24 @@
                         <td>{{ blockchain.requirements.cpu }}</td>
                         <td>{{ blockchain.requirements.ram }}</td>
                         <td>{{ blockchain.requirements.ssd }}</td>
-                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
-                            blockchain.quantityOfValidators ? blockchain.quantityOfValidators : 'Loading...' }}</td>
-                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
-                            blockchain.minimumTokensToBeActive ? blockchain.minimumTokensToBeActive : 'Loading...' }} {{ blockchain.cryptocurrency }}
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
+                            {{ blockchain.quantityOfValidators ? blockchain.quantityOfValidators : 'Loading...' }}
                         </td>
-                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
-                            blockchain.enterCost ? `$${blockchain.enterCost.toFixed(2)}` : 'Loading...' }}</td>
-                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
-                            blockchain.votingPowerFifth ? blockchain.votingPowerFifth : 'Loading...' }} {{ blockchain.cryptocurrency }}
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
+                            {{ blockchain.minimumTokensToBeActive ? blockchain.minimumTokensToBeActive.toLocaleString() : 'Loading...' }} {{ blockchain.cryptocurrency }}
                         </td>
-                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
-                            blockchain.fifthTokenCost ? `$${blockchain.fifthTokenCost.toFixed(2)}` : 'Loading...' }}</td>
-                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">{{
-                            blockchain.emptyPlaces !== null ? blockchain.emptyPlaces : 'Loading...' }}</td>
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
+                            {{ blockchain.enterCost ? `$${Number(blockchain.enterCost.toFixed(2)).toLocaleString()}` : 'Loading...' }}
+                        </td>
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
+                            {{ blockchain.votingPowerFifth ? blockchain.votingPowerFifth.toLocaleString() : 'Loading...' }} {{ blockchain.cryptocurrency }}
+                        </td>
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
+                            {{ blockchain.fifthTokenCost ? `$${Number(blockchain.fifthTokenCost.toFixed(2)).toLocaleString()}` : 'Loading...' }}
+                        </td>
+                        <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
+                            {{ blockchain.emptyPlaces !== null ? blockchain.emptyPlaces.toLocaleString() : 'Loading...' }}
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -75,7 +82,7 @@ export default {
             tooltipVisible: false,
             tooltipMessage: '',
             sortedColumn: '',
-            sortOrder: 'asc' // default sort order
+            sortOrder: 'asc'
         };
     },
     computed: {
@@ -143,18 +150,19 @@ export default {
                         .then(response => {
                             if (response && response.data.validators) {
                                 const validators = response.data.validators;
-                                const votingPower = validators[validators.length - 1]?.voting_power;
-                                const votingPowerFifth = validators[validators.length - 5]?.voting_power;
-                                let total = response.data.pagination.total;
+                                const votingPower = Number(validators[validators.length - 1]?.voting_power);
+                                const votingPowerFifth = Number(validators[validators.length - 5]?.voting_power);
+                                let total = Number(response.data.pagination.total);
 
                                 if (total === 0 || total === undefined) {
                                     total = validators.length;
                                 }
 
                                 blockchain.quantityOfValidators = `${total} / ${blockchain.max_validators}`;
-                                blockchain.minimumTokensToBeActive = votingPower;
-                                blockchain.votingPowerFifth = votingPowerFifth;
                                 blockchain.emptyPlaces = blockchain.max_validators - total;
+                                blockchain.minimumTokensToBeActive = blockchain.emptyPlaces > 0 ? 1 : votingPower;
+                                blockchain.votingPowerFifth = votingPowerFifth;
+                                
                                 blockchain.manualData = false;
                                 resolve();
                             } else {
@@ -195,7 +203,7 @@ export default {
                     if (response.data?.message) {
                         this.fetchTokenPriceFromCoinGecko(blockchain);
                     } else {
-                        const tokenPrice = response.data.price;
+                        const tokenPrice = Number(response.data.price);
                         if (tokenPrice) {
                             blockchain.enterCost = tokenPrice * blockchain.minimumTokensToBeActive;
                             blockchain.fifthTokenCost = tokenPrice * blockchain.votingPowerFifth;
@@ -223,7 +231,7 @@ export default {
                 }
             })
                 .then(response => {
-                    const tokenPrice = response.data[blockchain.ids_coingecko]?.usd;
+                    const tokenPrice = Number(response.data[blockchain.ids_coingecko]?.usd);
                     if (tokenPrice) {
                         blockchain.enterCost = tokenPrice * blockchain.minimumTokensToBeActive;
                         blockchain.fifthTokenCost = tokenPrice * blockchain.votingPowerFifth;
@@ -241,7 +249,7 @@ export default {
         },
         showTooltip(event, blockchain) {
             if (blockchain.manualData) {
-                this.tooltipMessage = "Data is entered manually and may not be up-to-date, check the information in explorer.";
+                this.tooltipMessage = "Data is entered manually and may not be up-to-date, check the information in explorer or official website.";
                 this.tooltipVisible = true;
             }
         },
