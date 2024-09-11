@@ -1448,7 +1448,7 @@
       ]
     },
     {
-      "name": "Fetch.ai",
+      "name": "ASI ALLIANCE (Fetch.ai)",
       "description": "Fetch.ai is a decentralized blockchain platform that combines artificial intelligence (AI) and machine learning with decentralized networks to create autonomous economic agents. These agents can perform tasks such as data sharing, complex coordination, and negotiation, enabling automated interactions and decision-making across various industries. Fetch.ai aims to build a decentralized digital economy where agents can operate and collaborate autonomously, driving efficiency and innovation.",
       "cryptocurrency": "FET",
       "ids_coingecko": "fetch-ai",
@@ -3309,7 +3309,7 @@
       "telegram": "https://t.me/kavalabs",
       "api_validators": "https://kava-api.polkachu.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
       "current_amount_of_validators": 94,
-      "max_validators":  100,
+      "max_validators": 100,
       "minimum_token": 585,
       "requirements": {
         "cpu": "",
@@ -3435,7 +3435,364 @@
           "link": "https://polkachu.com/installation/band"
         }
       ]
+    },
+    {
+      "name": "Chain4Energy",
+      "description": "Chain4Energy (C4E) is a Layer 1 blockchain designed specifically for the energy sector, providing a decentralized infrastructure for managing energy production, trading, and community engagement. C4E leverages Cosmos SDK and IBC to enable efficient and transparent energy data management, peer-to-peer energy trading, and the digitization of renewable energy certificates.",
+      "cryptocurrency": "C4E",
+      "ids_coingecko": "chain4energy",
+      "logo": "c4e.png",
+      "website": "https://c4e.io/",
+      "github": "https://github.com/chain4energy/c4e-chain",
+      "mintscan": "",
+      "pingpub": "https://ping.pub/chain4energy",
+      "documentation": "https://docs.c4e.io/",
+      "twitter": "https://twitter.com/chain4energy",
+      "discord": "https://discord.com/invite/chain4energy",
+      "telegram": "https://t.me/c4e_official",
+      "api_validators": "https://lcd.c4e.io/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 72,
+      "max_validators": 75,
+      "minimum_token": 11,
+      "requirements": {
+        "cpu": "4",
+        "ram": "16GB",
+        "ssd": "300GB"
+      },
+      "ecosystem": [
+        {
+          "name": "C4e dashboard",
+          "type": "Dashboard",
+          "link": "https://wallet.c4e.io/dashboard"
+        },
+        {
+          "name": "C4E explorer",
+          "type": "Explorer",
+          "link": "https://explorer.c4e.io/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Developing a decentralized platform for energy management and trading on the blockchain."
+        },
+        {
+          "contribution": "Creating tools for immutable energy data tracking and recording using blockchain technology."
+        },
+        {
+          "contribution": "Implementing a Layer 1 infrastructure capable of supporting smart contracts and dApps for the energy market."
+        },
+        {
+          "contribution": "Building secure and efficient mechanisms for energy data tokenization and validation on the blockchain."
+        },
+        {
+          "contribution": "Integrating green energy certificates into the blockchain for enhanced traceability and market access."
+        },
+        {
+          "contribution": "Optimizing the platform for scalability and high transaction throughput, supporting up to 10,000 TPS."
+        },
+        {
+          "contribution": "Operating a high-performance validator node on the blockchain, ensuring high availability and security. This helps maintain network stability and trustworthiness."
+        },
+        {
+          "contribution": "Creating or enhance tools that assist validators in monitoring their node performance, tracking staking operations, and detecting potential issues, ensuring the overall health of the network."
+        },
+        {
+          "contribution": "Contributing to the creation of comprehensive onboarding guides, best practices, and troubleshooting resources for new validators, making it easier for them to set up and maintain their nodes."
+        },
+        {
+          "contribution": "Making docker images and ansible scripts for easy installation nodes."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Hosting community-driven governance to propose and vote on changes to the network."
+        },
+        {
+          "contribution": "Providing educational resources and tutorials for new users and developers within the energy ecosystem."
+        },
+        {
+          "contribution": "Supporting the adoption of decentralized energy solutions through events and workshops."
+        },
+        {
+          "contribution": "Creating content to raise awareness about sustainable energy practices and blockchain technology."
+        },
+        {
+          "contribution": "Moderating forums and social media groups to ensure active engagement and support within the community."
+        },
+        {
+          "contribution": "Organizing hackathons and grant programs to incentivize innovation and development on the Chain4Energy platform."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Mainnet validator (official)",
+          "link": "https://docs.c4e.io/validatorsGuide/mainnet/hardware-requirements.html"
+        }
+      ]
+    },
+    {
+      "name": "dYdX",
+      "description": "dYdX is a Layer 1 blockchain network built on the Cosmos SDK, leveraging CometBFT for consensus. It aims to provide a fully decentralized, scalable trading platform, particularly focused on perpetual contracts. The network uses the DYDX token for staking, governance, and securing the blockchain, offering a decentralized infrastructure with an off-chain order book and matching engine.",
+      "cryptocurrency": "DYDX",
+      "ids_coingecko": "dydx",
+      "logo": "dydx.svg",
+      "website": "https://dydx.exchange/",
+      "github": "https://github.com/dydxprotocol",
+      "mintscan": "https://www.mintscan.io/dydx",
+      "pingpub": "https://ping.pub/dydx",
+      "documentation": "https://docs.dydx.exchange/",
+      "twitter": "https://twitter.com/dydx",
+      "discord": "https://discord.com/invite/dydx",
+      "telegram": null,
+      "api_validators": "https://dydx-dao-api.polkachu.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 60,
+      "max_validators": 60,
+      "minimum_token": 378846,
+      "requirements": {
+        "cpu": "8",
+        "ram": "64GB",
+        "ssd": "500GB"
+      },
+      "ecosystem": [
+        {
+          "name": "Off-Chain Orderbook",
+          "type": "Decentralized Trading Infrastructure",
+          "link": "https://dydx.exchange/"
+        },
+        {
+          "name": "Mobile Apps",
+          "type": "Trading Applications",
+          "link": "https://dydx.exchange/mobile"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Development of a decentralized off-chain order book and matching engine for high scalability."
+        },
+        {
+          "contribution": "Implementation of CometBFT consensus for secure and efficient block validation."
+        },
+        {
+          "contribution": "Creation of open-source tools and software, including APIs and mobile apps, for decentralized trading."
+        },
+        {
+          "contribution": "Optimizing the blockchain infrastructure to handle thousands of transactions per second."
+        },
+        {
+          "contribution": "Designing staking and governance mechanisms that align validator incentives with network security."
+        },
+        {
+          "contribution": "Building secure bridges and protocols for seamless asset migration from Ethereum to dYdX Chain."
+        },
+        {
+          "contribution": "Operating a high-performance validator node on the blockchain, ensuring high availability and security. This helps maintain network stability and trustworthiness."
+        },
+        {
+          "contribution": "Creating or enhance tools that assist validators in monitoring their node performance, tracking staking operations, and detecting potential issues, ensuring the overall health of the network."
+        },
+        {
+          "contribution": "Contributing to the creation of comprehensive onboarding guides, best practices, and troubleshooting resources for new validators, making it easier for them to set up and maintain their nodes."
+        },
+        {
+          "contribution": "Making docker images and ansible scripts for easy installation nodes."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Hosting governance processes that empower the community to propose and vote on key protocol changes."
+        },
+        {
+          "contribution": "Providing extensive documentation, guides, and support to help users interact with the dYdX Chain."
+        },
+        {
+          "contribution": "Organizing educational events and community discussions to foster user engagement and protocol development."
+        },
+        {
+          "contribution": "Creating incentives for validators and stakers, promoting a diverse and secure network environment."
+        },
+        {
+          "contribution": "Supporting open-source development initiatives and grants for building tools on the dYdX Chain."
+        },
+        {
+          "contribution": "Engaging with users through social media platforms and forums to collect feedback and improve the protocol."
+        },
+        {
+          "contribution": "Translating documentation and resources: translating official documentation, guides, and community content into different languages to make network more accessible to a global audience. For example, you can take Network news from twitter accounts and translate it on local languages such as Spanish, German, Russian, Chines, etc. You can translate by yourself or you can use LLM's for automatisation this process."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Run a validator node (official)",
+          "link": "https://docs.dydx.exchange/infrastructure_providers-validators/set_up_full_node"
+        }
+      ]
+    },
+    {
+      "name": "Neutron",
+      "description": "Neutron is a smart contract platform built on the Cosmos SDK that brings advanced cross-chain functionality to the Cosmos ecosystem. It enables developers to create scalable and secure decentralized applications (dApps) using CosmWasm, with security provided by the Cosmos Hub through Interchain Security. Neutron supports smart contracts with interchain queries and transactions, allowing seamless cross-chain operations and data retrieval.",
+      "cryptocurrency": "NTRN",
+      "ids_coingecko": "neutron",
+      "logo": "neutron.svg",
+      "website": "https://www.neutron.org/",
+      "github": "https://github.com/neutron-org/neutron",
+      "mintscan": "https://www.mintscan.io/neutron",
+      "pingpub": "https://ping.pub/neutron",
+      "documentation": "https://docs.neutron.org/",
+      "twitter": "https://twitter.com/neutron_org",
+      "discord": "https://discord.neutron.org",
+      "telegram": "https://t.me/neutron_org",
+      "api_validators": "",
+      "current_amount_of_validators": null,
+      "max_validators": null,
+      "minimum_token": null,
+      "requirements": {
+        "cpu": "",
+        "ram": "",
+        "ssd": ""
+      },
+      "ecosystem": [
+        {
+          "name": "Astroport",
+          "type": "Decentralized Exchange",
+          "link": "https://astroport.fi/"
+        },
+        {
+          "name": "Mars Protocol",
+          "type": "Lending Platform",
+          "link": "https://marsprotocol.io/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Implementation of Interchain Queries (ICQs) and Interchain Accounts (ICAs) to enhance cross-chain data retrieval and transaction management."
+        },
+        {
+          "contribution": "Development of a secure and scalable smart contract platform using CosmWasm, optimized for cross-chain interactions."
+        },
+        {
+          "contribution": "Integration of advanced cross-chain functionalities, allowing smart contracts to interact with other blockchains within the Cosmos ecosystem."
+        },
+        {
+          "contribution": "Support for modular smart contract development with a focus on secure data handling and efficient execution across multiple blockchains."
+        },
+        {
+          "contribution": "Providing in-protocol automation and custom fee structures to facilitate the creation of efficient and cost-effective decentralized applications."
+        },
+        {
+          "contribution": "Developing infrastructure that includes operator sets, integrations with wallets, explorers, and other essential tools for developers."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Governance managed by the Neutron DAO, with a unique model that includes multiple subDAOs for more effective and decentralized decision-making."
+        },
+        {
+          "contribution": "Providing educational resources, tutorials, and community support to help developers build on Neutron using CosmWasm and interchain technologies."
+        },
+        {
+          "contribution": "Organizing events, hackathons, and community discussions to engage developers and promote the growth of Neutron’s ecosystem."
+        },
+        {
+          "contribution": "Establishing a sustainable tokenomics model with $NTRN distribution to incentivize community participation and ecosystem development."
+        },
+        {
+          "contribution": "Maintaining a transparent and inclusive governance structure that allows community members to propose and vote on network changes."
+        },
+        {
+          "contribution": "Supporting a collaborative developer community focused on building innovative cross-chain applications within the Cosmos ecosystem."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Node installation guide (Polkachu)",
+          "link": "https://polkachu.com/installation/neutron"
+        }
+      ]
+    },
+    {
+      "name": "Saga",
+      "description": "Saga is a Layer 1 protocol designed to enable developers to easily deploy specialized application-specific blockchains known as Chainlets. By offering shared security and automated deployment pipelines, Saga allows for the creation of highly customizable and scalable chains that can run independently, providing a flexible and predictable development environment ideal for gaming, DeFi, and other Web3 applications.",
+      "cryptocurrency": "SAGA",
+      "ids_coingecko": "saga",
+      "logo": "saga.jpeg",
+      "website": "https://www.saga.xyz/",
+      "github": "https://github.com/sagaxyz",
+      "mintscan": "https://www.mintscan.io/saga",
+      "pingpub": "",
+      "documentation": "https://docs.saga.xyz/",
+      "twitter": "https://twitter.com/Sagaxyz__",
+      "discord": "https://discord.com/invite/UCRsTy82Ub",
+      "telegram": "https://t.me/sagaofficialchannel",
+      "api_validators": "https://saga-api.lavenderfive.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 21,
+      "max_validators": 21,
+      "minimum_token": 10601219,
+      "requirements": {
+        "cpu": "",
+        "ram": "",
+        "ssd": ""
+      },
+      "ecosystem": [
+        {
+          "name": "Chainlets",
+          "type": "Dedicated Blockchains",
+          "link": "https://docs.saga.xyz/introduction/saga-chainlets"
+        },
+        {
+          "name": "Saga Realms",
+          "type": "Scalable Blockspace",
+          "link": "https://www.saga.xyz/multiverse"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Developing Chainlets, which are application-specific blockchains that provide independent, scalable environments for deploying smart contracts."
+        },
+        {
+          "contribution": "Providing shared security through Saga validators, allowing developers to leverage Saga's security model without needing separate validator sets."
+        },
+        {
+          "contribution": "Supporting VM-agnostic environments, allowing the use of various virtual machines including EVM, SolanaVM, and MoveVM, enhancing flexibility for developers."
+        },
+        {
+          "contribution": "Enabling parallelized and independent Chainlets to avoid resource competition, optimizing performance and scalability."
+        },
+        {
+          "contribution": "Implementing validator orchestration tools to efficiently manage multiple Chainlets, automating the security and operation of the network."
+        },
+        {
+          "contribution": "Automating cross-chain interoperability and fast bridging between Chainlets and other ecosystems, enhancing composability."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Launching the Saga Innovator Program to support projects in gaming, DeFi, and entertainment, promoting collaboration and ecosystem growth."
+        },
+        {
+          "contribution": "Providing educational resources, technical support, and funding opportunities for developers building on Saga."
+        },
+        {
+          "contribution": "Facilitating community engagement through events, hackathons, and roundtables to foster innovation and knowledge sharing among developers."
+        },
+        {
+          "contribution": "Implementing a decentralized governance model that allows the community to propose and vote on protocol changes and resource allocations."
+        },
+        {
+          "contribution": "Building partnerships with other Layer 1 protocols like Polygon, Avalanche, and Celestia to expand Saga’s reach and integration capabilities."
+        },
+        {
+          "contribution": "Supporting airdrop campaigns to reward community members and early adopters from various ecosystems like Cosmos, Polygon, and Avalanche."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Node installation guide (Polkachu)",
+          "link": "https://polkachu.com/installation/saga"
+        }
+      ]
     }
-    
   ]
 }

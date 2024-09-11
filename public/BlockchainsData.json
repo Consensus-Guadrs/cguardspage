@@ -1,11 +1,25 @@
 {
   "blockchains": [
     {
+      "name": "XPLA",
+      "mainnet": true,
+      "logo": "xpla.png",
+      "description": "XPLA is a blockchain platform designed to support decentralized applications (dApps) with a focus on providing a robust and scalable infrastructure. It offers enhanced interoperability and security features, making it suitable for a wide range of use cases, including DeFi, NFTs, and gaming.",
+      "developerLink": "https://www.mintscan.io/xpla/validators/xplavaloper1u9z5wfwrk5j32w6ldcuftgwfnl7qm8g2u36xpu"
+    },
+    {
       "name": "Juno",
       "mainnet": true,
       "logo": "juno.png",
       "description": "Juno is a decentralized, community-driven Layer 1 blockchain built on the Cosmos SDK, designed for the efficient deployment of interoperable smart contracts using the CosmWasm framework.",
       "developerLink": "https://ping.pub/juno/staking/junovaloper1yvc0sefqy9f8t852r97mnetuk6u85hupqlul2p"
+    },
+    {
+      "name": "Bitcanna",
+      "mainnet": true,
+      "logo": "bitcanna.svg",
+      "description": "BitCanna is a blockchain network designed to provide a decentralized payment solution and supply chain management for the legal cannabis industry. BitCanna aims to streamline financial operations, enhance transparency, and build trust among consumers and businesses in the cannabis sector.",
+      "developerLink": "https://ping.pub/bitcanna/staking/bcnavaloper1vewckpzn6dxehy724k2ydfwmm4s06gu5gw5782"
     },
     {
       "name": "Nibiru",
