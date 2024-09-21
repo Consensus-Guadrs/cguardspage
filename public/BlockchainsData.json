@@ -8,6 +8,13 @@
       "developerLink": "https://www.mintscan.io/xpla/validators/xplavaloper1u9z5wfwrk5j32w6ldcuftgwfnl7qm8g2u36xpu"
     },
     {
+      "name": "KYVE",
+      "mainnet": true,
+      "logo": "kyve.svg",
+      "description": "KYVE, the Web3 data lake solution, is a protocol that enables data providers to standardize, validate, and permanently store blockchain data streams.",
+      "developerLink": "https://www.mintscan.io/kyve/validators/kyvevaloper1qxjkuqcctavfg9tdgkggk5j2j0la7dgzw459xx"
+    },
+    {
       "name": "Juno",
       "mainnet": true,
       "logo": "juno.png",
@@ -34,6 +41,13 @@
       "logo": "sputnik.avif",
       "description": "Sputnik Network App-Chain is the part of future PostState Blockchain Sputnik Network will be Cosmos Ecosystem Hub to send and recieve crypto, and also to recieve airdrops: InterChain Accounts; Ranking users by the received airdrops with predefined parameters; Provide lists of stakers for Cosmos Ecosystem projects to distribute airdrops; Helping users to claim or recieve airdrops; Sending transactions to list of users by addresses or username of Telegram, Twitter, Discord; A simple tool for scheduling and distributing airdrops.",
       "developerLink": "https://sputniknetwork.digital/"
+    },
+    {
+      "name": "Ocean Nodes",
+      "mainnet": false,
+      "logo": "https://avatars.githubusercontent.com/u/31523682?s=200&v=4",
+      "description": "The tool to enhance AI capabilities and make the most computational resources.",
+      "developerLink": "https://github.com/oceanprotocol/ocean-node"
     }
   ],
   "communityContributions": [

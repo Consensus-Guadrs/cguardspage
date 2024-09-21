@@ -3793,6 +3793,167 @@
           "link": "https://polkachu.com/installation/saga"
         }
       ]
+    },
+    {
+      "name": "AssetMantle",
+      "description": "AssetMantle is a decentralized infrastructure built using the Cosmos SDK that facilitates the creation, ownership, exchange, and transfer of digitally owned assets, including NFTs. It provides a multi-tenant NFT marketplace framework that allows creators and collectors to securely mint, own, and trade digital assets on its blockchain. AssetMantle supports a wide variety of assets, from digital collectibles to real-world assets, enabling interoperability, value creation, and identity management in the Web3 ecosystem.",
+      "cryptocurrency": "MNTL",
+      "ids_coingecko": "assetmantle",
+      "logo": "https://avatars.githubusercontent.com/u/97742402?s=200&v=4",
+      "website": "https://www.assetmantle.one/",
+      "github": "https://github.com/AssetMantle",
+      "mintscan": "https://www.mintscan.io/asset-mantle",
+      "pingpub": "",
+      "documentation": "https://docs.assetmantle.one/",
+      "twitter": "https://twitter.com/assetmantle",
+      "discord": "https://discord.com/invite/BSdBQ4495d",
+      "telegram": "https://t.me/assetmantlechat",
+      "api_validators": "https://rest.assetmantle.one/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 64,
+      "max_validators": 70,
+      "minimum_token": 2074813,
+      "requirements": {
+        "cpu": "4",
+        "ram": "32GB",
+        "ssd": "200GB"
+      },
+      "ecosystem": [
+        {
+          "name": "MantlePlace",
+          "type": "NFT Marketplace",
+          "link": "https://marketplace.assetmantle.one/"
+        },
+        {
+          "name": "MantleBuilder",
+          "type": "Customizable NFT Store",
+          "link": "https://docs.assetmantle.one/MantleBuilder_Overview/"
+        },
+        {
+          "name": "MantleWallet",
+          "type": "Wallet",
+          "link": "https://wallet.assetmantle.one/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Built on the Cosmos SDK with the Tendermint core consensus engine to facilitate asset tokenization and NFT trading."
+        },
+        {
+          "contribution": "Provides a highly intuitive and easy-to-use NFT marketplace with features such as lazy minting, cross-chain interoperability, and TradeRoom for real-time trading."
+        },
+        {
+          "contribution": "Supports a wide range of asset classes, including web3 native assets, digital assets, real-world assets (RWAs), and hybrid assets, ensuring a high level of interoperability."
+        },
+        {
+          "contribution": "Developed a proprietary standard for digitally owned assets (iDOA) and digitally controlled identities (iDCI), enabling uniformity and interoperability across the platform."
+        },
+        {
+          "contribution": "Enables creators to build their customized marketplaces using MantleBuilder, offering complete no-code customization and branding."
+        },
+        {
+          "contribution": "Operating a high-performance validator node on the blockchain, ensuring high availability and security. This helps maintain network stability and trustworthiness."
+        },
+        {
+          "contribution": "Creating or enhance tools that assist validators in monitoring their node performance, tracking staking operations, and detecting potential issues, ensuring the overall health of the network."
+        },
+        {
+          "contribution": "Contributing to the creation of comprehensive onboarding guides, best practices, and troubleshooting resources for new validators, making it easier for them to set up and maintain their nodes."
+        },
+        {
+          "contribution": "Making docker images and ansible scripts for easy installation nodes."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Providing educational resources and documentation to onboard creators, collectors, and developers."
+        },
+        {
+          "contribution": "Establishing partnerships with various ecosystems and networks to expand AssetMantle’s reach and value proposition."
+        },
+        {
+          "contribution": "Facilitating the creation of a decentralized identity stack, enabling self-sovereign identities and trust in the ecosystem."
+        },
+        {
+          "contribution": "Supporting an open and democratic approach to ecosystem growth and innovation through a community-driven roadmap and development."
+        },
+        {
+          "contribution": "Implementing airdrop campaigns and incentive programs such as the MantleDrop to reward community members and early adopters."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Run a node (official)",
+          "link": "https://github.com/AssetMantle/node"
+        },
+        {
+          "tutorial": "Polkachu tutorial node installation guide",
+          "link": "https://polkachu.com/installation/assetmantle"
+        }
+      ]
+    },
+    {
+      "name": "Sentinel",
+      "description": "Sentinel is a decentralized, open-source network focused on enabling a secure and private bandwidth-sharing ecosystem through a peer-to-peer bandwidth marketplace. It offers a decentralized VPN (dVPN) service, providing enhanced privacy, anonymity, and censorship resistance for users. The Sentinel blockchain uses blockchain technology to facilitate a transparent and trustless environment, while leveraging Cosmos SDK and Tendermint Core for its consensus mechanism.",
+      "cryptocurrency": "DVPN",
+      "ids_coingecko": "sentinel",
+      "logo": "https://avatars.githubusercontent.com/u/31222844?s=200&v=4",
+      "website": "https://www.sentinel.co/",
+      "github": "https://github.com/sentinel-official",
+      "mintscan": "https://www.mintscan.io/sentinel",
+      "pingpub": "https://ping.pub/sentinel",
+      "documentation": "https://docs.sentinel.co/",
+      "twitter": "https://twitter.com/Sentinel_co",
+      "discord": "https://discord.com/invite/mmAA8qF",
+      "telegram": "https://t.me/SentinelDVPN",
+      "api_validators": "https://sentinel-rest.publicnode.com/cosmos/base/tendermint/v1beta1/validatorsets/latest?pagination.limit=100&pagination.offset=0",
+      "current_amount_of_validators": 80,
+      "max_validators": 80,
+      "minimum_token": 1,
+      "requirements": {
+        "cpu": "6",
+        "ram": "32GB",
+        "ssd": "2TB"
+      },
+      "ecosystem": [
+        {
+          "name": "Sentinel dVPN",
+          "type": "Decentralized VPN",
+          "link": "https://www.sentinel.co/"
+        }
+      ],
+      "technical_contributions": [
+        {
+          "contribution": "Sentinel has developed a peer-to-peer bandwidth marketplace, allowing users to share or access private bandwidth through decentralized means."
+        },
+        {
+          "contribution": "Utilizes Cosmos SDK and Tendermint Core for its blockchain infrastructure, offering scalability and interoperability."
+        },
+        {
+          "contribution": "Offers a decentralized VPN (dVPN) service that enhances user privacy and anonymity, while resisting censorship."
+        }
+      ],
+      "community_contributions": [
+        {
+          "contribution": "Sentinel has created an open-source platform, inviting community developers to contribute to the dVPN ecosystem."
+        },
+        {
+          "contribution": "Integrates decentralized governance, enabling the community to participate in protocol updates and changes."
+        }
+      ],
+      "installation_tutorials": [
+        {
+          "tutorial": "Node installation guide (Official)",
+          "link": "https://docs.sentinel.co/full-node-setup"
+        },
+        {
+          "tutorial": "Become a Validator Mainnet (official)",
+          "link": "https://docs.sentinel.co/validator-setup"
+        },
+        {
+          "tutorial": "Node installation guide (Polkachu)",
+          "link": "https://polkachu.com/installation/sentinel"
+        }
+      ]
     }
   ]
 }
