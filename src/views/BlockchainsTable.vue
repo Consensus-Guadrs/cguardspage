@@ -41,19 +41,24 @@
                             {{ blockchain.quantityOfValidators ? blockchain.quantityOfValidators : 'Loading...' }}
                         </td>
                         <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
-                            {{ blockchain.minimumTokensToBeActive ? blockchain.minimumTokensToBeActive.toLocaleString() : 'Loading...' }} {{ blockchain.cryptocurrency }}
+                            {{ blockchain.minimumTokensToBeActive ? blockchain.minimumTokensToBeActive.toLocaleString()
+                            : 'Loading...' }} {{ blockchain.cryptocurrency }}
                         </td>
                         <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
-                            {{ blockchain.enterCost ? `$${Number(blockchain.enterCost.toFixed(2)).toLocaleString()}` : 'Loading...' }}
+                            {{ blockchain.enterCost ? `$${Number(blockchain.enterCost.toFixed(2)).toLocaleString()}` :
+                            'Loading...' }}
                         </td>
                         <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
-                            {{ blockchain.votingPowerFifth ? blockchain.votingPowerFifth.toLocaleString() : 'Loading...' }} {{ blockchain.cryptocurrency }}
+                            {{ blockchain.votingPowerFifth ? blockchain.votingPowerFifth.toLocaleString() : 'Loading...'
+                            }} {{ blockchain.cryptocurrency }}
                         </td>
                         <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
-                            {{ blockchain.fifthTokenCost ? `$${Number(blockchain.fifthTokenCost.toFixed(2)).toLocaleString()}` : 'Loading...' }}
+                            {{ blockchain.fifthTokenCost ?
+                                `$${Number(blockchain.fifthTokenCost.toFixed(2)).toLocaleString()}` : 'Loading...' }}
                         </td>
                         <td :style="{ backgroundColor: blockchain.manualData ? 'rgba(255, 0, 0, 0.1)' : '' }">
-                            {{ blockchain.emptyPlaces !== null ? blockchain.emptyPlaces.toLocaleString() : 'Loading...' }}
+                            {{ blockchain.emptyPlaces !== null ? blockchain.emptyPlaces.toLocaleString() : 'Loading...'
+                            }}
                         </td>
                     </tr>
                 </tbody>
@@ -162,7 +167,7 @@ export default {
                                 blockchain.emptyPlaces = blockchain.max_validators - total;
                                 blockchain.minimumTokensToBeActive = blockchain.emptyPlaces > 0 ? 1 : votingPower;
                                 blockchain.votingPowerFifth = votingPowerFifth;
-                                
+
                                 blockchain.manualData = false;
                                 resolve();
                             } else {
@@ -200,26 +205,19 @@ export default {
                 }
             })
                 .then(response => {
-                    if (response.data?.message) {
-                        this.fetchTokenPriceFromCoinGecko(blockchain);
+                    const tokenPrice = Number(response.data?.price);
+
+                    if (tokenPrice) {
+                        blockchain.enterCost = tokenPrice * blockchain.minimumTokensToBeActive;
+                        blockchain.fifthTokenCost = tokenPrice * blockchain.votingPowerFifth;
                     } else {
-                        const tokenPrice = Number(response.data.price);
-                        if (tokenPrice) {
-                            blockchain.enterCost = tokenPrice * blockchain.minimumTokensToBeActive;
-                            blockchain.fifthTokenCost = tokenPrice * blockchain.votingPowerFifth;
-                        } else {
-                            blockchain.enterCost = null;
-                            blockchain.fifthTokenCost = null;
-                        }
+                        console.warn(`Price not found on Osmosis API for ${blockchain.name}. Falling back to CoinGecko.`);
+                        this.fetchTokenPriceFromCoinGecko(blockchain);
                     }
                 })
                 .catch(error => {
-                    if (error.response && error.response.status >= 400 && error.response.status < 500) {
-                        console.error(`Osmosis API returned error ${error.response.status} for ${blockchain.name}. Falling back to CoinGecko API.`);
-                        this.fetchTokenPriceFromCoinGecko(blockchain);
-                    } else {
-                        console.error(`Error fetching price data for ${blockchain.name} from Osmosis API:`, error);
-                    }
+                    console.error(`Error fetching price data for ${blockchain.name} from Osmosis API:`, error);
+                    this.fetchTokenPriceFromCoinGecko(blockchain);
                 });
         },
         fetchTokenPriceFromCoinGecko(blockchain) {

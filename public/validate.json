@@ -382,7 +382,7 @@
       "name": "Celestia",
       "description": "Celestia is the first modular blockchain network that decouples consensus from execution, allowing developers to build scalable and customizable blockchains. It functions as a data availability layer, enabling other blockchains to securely publish their transactions and maintain high throughput. This modular approach enhances scalability and flexibility, making it easier to deploy and manage specialized blockchain applications.",
       "cryptocurrency": "TIA",
-      "ids_coingecko": "tia",
+      "ids_coingecko": "celestia",
       "logo": "celestia.png",
       "website": "https://celestia.org/",
       "github": "https://github.com/celestiaorg",
